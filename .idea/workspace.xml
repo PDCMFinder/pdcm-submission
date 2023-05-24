@@ -5,219 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d50b0ae7-ba6c-4b25-b0a4-540b736f59e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/website/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/.storybook/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/.storybook/preview-head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/.storybook/preview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/docusaurus.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/dotenv-plugin/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/dotenv-plugin/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/sidebars.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/AlgoliaSearch/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/AlgoliaSearch/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Button/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CodeBlock/createdTheme.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CodeBlock/default.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CodeBlock/deletedTheme.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CodeBlock/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CodeBlock/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CompareLegend/index.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/CompareLegend/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/ContentMenu/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Dictionary/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/DictionaryDiff.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/FileFilters/components.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/FileFilters/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/FileFilters/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Meta/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Modal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/RespImage/index.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/RespImage/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Row/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/CodeList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/DiffText.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/HighlightedRegex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/Regex.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/TableComponents.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Select/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/StyleWrapper/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Table/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Tabs/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Tag/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Tag/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/DictionaryTree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/Tree/Tree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/Tree/TreeNode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/Tree/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/ZoomPanContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/TreeView/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/Typography/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/VersionSelect/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/components/common/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/helpers/schema.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/hooks/useAlgolia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/meta.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/tree.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Button.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Header.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Introduction.stories.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Page.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/Page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/code-brackets.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/colors.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/comments.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/direction.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/flow.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/plugin.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/repo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/assets/stackalt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/stories/page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/styles/EmotionThemeProvider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/styles/theme/default/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/styles/theme/icgc-argo/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/CodeBlock/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/CodeBlock/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocItem/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocItem/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocPage/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocPage/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocSidebar/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/DocSidebar/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/Footer/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/Footer/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/Navbar/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/Navbar/styles.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/SearchBar/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/theme/common.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-Alignment.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-DNA-seq-data-analysis.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-Mutect2-variant-calling.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-WGS-variant-calling.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-WXS-variant-calling.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/ARGO-open-access-filtering.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/RNA-Seq-Alignment.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/analysis-workflows/RNA-Seq-data-analysis.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-access.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-annual-attestation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-app-history-button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-app-history-modal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-application.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-approval-diagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-approved-application.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-approved-email.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-approved.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-close-button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-close-modal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-closed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-draft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-expired-nonrenewable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-expired-renewable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-noapplications.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-rejected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-renew-button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-renewal-application.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-renewal-is-up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-renewal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-review.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-revisions-application.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-revisions-requested.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-signsubmit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-toc-complete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-toc-edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-toc-errors.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-toc-locked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/daco-toc-revise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/download-approved.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/download-draft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/download-finalized.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/download-signed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/user-profile-api-token.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/data-access/user-profile-program-access.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/ARGO-submission-process.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/ARGO-submission-process_v2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/ARGO-submission-process_v3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/banner-reminder.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/clinical-1-dowload-templates.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/clinical-2-upload.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/clinical-3-validate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/clinical-4-signoff.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/clinical-multiple-submitters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-clinical-complete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-clinical-submission.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-donor-star.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-donor-table-card.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-program-workspace-card.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-samples-raw-reads.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-stats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dashboard-workflow-statusbar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dictionary-conditional.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dictionary-core.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dictionary-extended.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dictionary-id.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/dictionary-required.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/molecular_submission_validation_directory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/molecular_submission_validation_directory_all_files.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/pre-release-data-file-repo-view.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/program_donor_summary_section.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/program_stats_section.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/register-1-download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/register-2-upload.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/register-3-register.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/registration-multiple-submitters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/submission-process.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/submitted-data-error-report.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/submitted-data-filter-card.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/submitted-data-table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/surgery_ex1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/surgery_ex2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/surgery_ex3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/surgery_ex4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/treatment_ex1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/treatment_ex2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/assets/submission/treatment_ex4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/css/custom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/css/markdown.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/data/schemas/1.0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/data/schemas/1.1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/data/schemas/schema-versions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/galaxy-splash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/chevron-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/analysis-workflows.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/controlled-data.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/data-dictionary.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/data-release.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/download.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/faq.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/publication-guidelines.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/home/testtube.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/search.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/icons/slash.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/logos/embl-ebi-rgb-full-colour.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/img/undraw_under_construction.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/pages/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/pages/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,21 +24,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs/website/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs/website/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pdcm-data-submission-docs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pdcm-data-submission-docs" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -260,6 +64,7 @@
       <updated>1684874202840</updated>
       <workItem from="1684874210227" duration="631000" />
       <workItem from="1684919040397" duration="343000" />
+      <workItem from="1684925584173" duration="135000" />
     </task>
     <servers />
   </component>
