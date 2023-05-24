@@ -1,0 +1,55 @@
+{
+  "schemas": [
+    {
+      "name": "patient",
+      "description": "The collection of descriptors associated with patient information for data submission to CancerModels.org.",
+      "fields": [
+        {
+          "name": "patient_id",
+          "valueType": "string",
+          "description": "Unique anonymous/de-identified ID for the patient from the provider.",
+          "meta": {
+            "primaryKey": true,
+            "examples": "A0088",
+            "format": "Alphanumeric"
+          },
+          "restrictions": {
+            "required": true,
+            "regex": "^[\\w\\d\\s/._~-]+$"
+          }
+        },
+        {
+          "name": "sex",
+          "valueType": "string",
+          "description": "Sex of the patient.",
+          "meta": {
+            "examples": "Female",
+            "format": "Any of the following values: [male, female, other, not collected, not provided]"
+          },
+          "restrictions": {
+            "required": false,
+            "codeList": ["female", "male", "other", "Not provided"]
+          }
+        },
+        {
+          "name": "history",
+          "valueType": "string",
+          "description": "Cancer relevant comorbidity or eviromental exposure.",
+          "meta": {
+            "examples": "lynch syndrome",
+            "format": "Free text"
+          },
+          "restrictions": {
+            "regex": "^[\\w\\d\\s\\(\\)\\+.',<>%:;_/\\-&]{0,1000}$"
+          }
+        }
+      ]
+    }
+  ],
+  "_id": "5f3c2d2b6b4024065103a64e",
+  "name": "diff-test",
+  "version": "0.7",
+  "createdAt": "2020-08-18T19:34:03.019Z",
+  "updatedAt": "2020-08-18T19:34:03.019Z",
+  "__v": 0
+}

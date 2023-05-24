@@ -1,0 +1,53 @@
+{
+  "schemas": [
+    {
+      "name": "patient",
+      "description": "The collection of descriptors associated with patient information for data submission to CancerModels.org.",
+      "fields": [
+        {
+          "name": "sex",
+          "valueType": "string",
+          "description": "Sex of the patient.",
+          "meta": {
+            "examples": "Female",
+            "format": "Any of the following values: [male, female, other, not collected, not provided]"
+          },
+          "restrictions": {
+            "required": true,
+            "codeList": ["female", "male", "other", "Not provided", "Not collected"]
+          }
+        },
+        {
+          "name": "history",
+          "valueType": "string",
+          "description": "Cancer relevant comorbidity or eviromental exposure.",
+          "meta": {
+            "examples": "lynch syndrome",
+            "format": "Free text"
+          },
+          "restrictions": {
+            "regex": "^[\\w\\d\\s\\(\\)\\+.',<>%:;_/\\-&]{0,1000}$"
+          }
+        },
+        {
+          "name": "ethnicity",
+          "valueType": "string",
+          "description": "Patient Ethnic group. Can be derived from self-assement or genetic analysis.",
+          "meta": {
+            "examples": "Eastern European",
+            "format": "Use NCIT ontology term where possible."
+          },
+          "restrictions": {
+            "regex": "^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_/\\-&]{0,250}$"
+          }
+        }
+      ]
+    }
+  ],
+  "_id": "5f3c2e646b4024065103a64f",
+  "name": "diff-test",
+  "version": "0.8",
+  "createdAt": "2020-08-18T19:39:16.820Z",
+  "updatedAt": "2020-08-18T19:39:16.820Z",
+  "__v": 0
+}

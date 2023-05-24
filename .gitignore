@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+*/node_modules
+
+lib/core/metadata.js
+lib/core/MetadataBlog.js
+
+temp/
+
+.env
+
+ignore

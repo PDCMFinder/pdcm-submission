@@ -1,0 +1,88 @@
+[
+  [
+    "patient.patient_id",
+    {
+      "left": {
+        "name": "patient_id",
+        "valueType": "string",
+        "description": "Unique anonymous/de-identified ID for the patient from the provider.",
+        "meta": {
+          "primaryId": true,
+          "examples": "TEST-CA",
+          "notes": "This is the unique id that is assigned to each patient.",
+          "displayName": "Patient ID"
+        },
+        "restrictions": {
+          "required": true,
+          "regex": "#/charset/regex/URL_SAFE"
+        }
+      },
+      "diff": {
+        "type": "deleted",
+        "data": {
+          "name": "patient_id",
+          "valueType": "string",
+          "description": "Unique anonymous/de-identified ID for the patient from the provider.",
+          "meta": {
+            "validationDependency": true,
+            "primaryId": true,
+            "examples": "TEST-CA",
+            "notes": "This is the unique id that is assigned to each patient.",
+            "displayName": "Program ID"
+          },
+          "restrictions": {
+            "required": true,
+            "regex": "#/charset/regex/URL_SAFE"
+          }
+        }
+      }
+    }
+  ],
+  [
+    "sample_registration.sex",
+    {
+      "left": {
+        "name": "sex",
+        "valueType": "string",
+        "description": "Sex of the patient.",
+        "meta": {
+          "displayName": "Sex"
+        },
+        "restrictions": {
+          "required": false,
+          "codeList": ["female", "male", "other", "Not provided"]
+        }
+      },
+      "right": {
+        "name": "sex",
+        "valueType": "string",
+        "description": "Sex of the patient.",
+        "meta": {
+          "displayName": "Sex"
+        },
+        "restrictions": {
+          "required": true,
+          "codeList": ["female", "male", "other", "Not provided", "Not collected"]
+        }
+      },
+      "diff": {
+        "description": {
+          "type": "updated",
+          "data": "needs to be here "
+        },
+        "restrictions": {
+          "required": {
+            "type": "updated",
+            "data": true
+          },
+          "codeList": {
+            "type": "updated",
+            "data": {
+              "added": ["Not collected"]
+            }
+          }
+        }
+      }
+    }
+  ]
+]
