@@ -38,7 +38,7 @@ function Footer() {
         <div className={styles.footerLogo}>
           <a href="https://www.cancermodels.org/">
             <img
-              src={useBaseUrl(`img/logos/`)}
+              src={useBaseUrl(`img/logos/cancermodels.png`)}
               alt="CancerModels.org"
               width="240px"
             />

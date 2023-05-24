@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from '@icgc-argo/uikit/Icon';
 import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
-import { Theme } from '../../styles/theme/icgc-argo';
+import { Theme } from '../../styles/theme/cancermodels';
 import { Schema, ChangeType } from '../../../types';
 import cloneDeep from 'lodash/cloneDeep';
 

@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d50b0ae7-ba6c-4b25-b0a4-540b736f59e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/pages/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/pages/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/.storybook/preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/.storybook/preview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/components/CompareLegend/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/components/CompareLegend/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/components/Schema/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/components/Schema/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/pages/dictionary/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/pages/dictionary/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/styles/theme/icgc-argo/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/theme/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/theme/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/theme/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/theme/Navbar/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +30,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs/website/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/tushar/PDX/SA-Y3/pdcm-data-submission-docs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="pdcm-data-submission-docs" />
@@ -65,6 +71,7 @@
       <workItem from="1684874210227" duration="631000" />
       <workItem from="1684919040397" duration="343000" />
       <workItem from="1684925584173" duration="135000" />
+      <workItem from="1684930075277" duration="2273000" />
     </task>
     <servers />
   </component>

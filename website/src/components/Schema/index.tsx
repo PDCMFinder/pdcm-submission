@@ -35,7 +35,7 @@ import { styled } from '@icgc-argo/uikit';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Icon from '@icgc-argo/uikit/Icon';
 import { useTheme } from 'emotion-theming';
-import { Theme } from '../../styles/theme/icgc-argo';
+import { Theme } from '../../styles/theme/cancermodels';
 import { Script } from './TableComponents';
 import Modal from '../Modal';
 import Typography from '@icgc-argo/uikit/Typography';
@@ -76,20 +76,12 @@ const FieldsTag = ({ fieldCount }) => (
 
 const FileExample = ({ name }) => (
   <div>
-    File Name Example:{' '}
+    Sheet Name Example:{' '}
     <span
       css={css`
         font-weight: 600;
       `}
     >{`${name}`}</span>
-    [-optional-extension]
-    <span
-      css={css`
-        font-weight: 600;
-      `}
-    >
-      .tsv
-    </span>
   </div>
 );
 
