@@ -423,6 +423,26 @@ const SchemaView = ({
 
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
+    {
+      Header: 'Notes',
+      Cell: ({ original: { name, meta, restrictions, diff, changeType } }) => {
+        const notes = meta && meta.format;
+        //const script = restrictions && restrictions.script;
+        //const diffScript = get(diff, 'meta.format');
+        const diffNotes = get(diff, 'meta.format');
+
+        return (
+          <div>
+            {changeType === ChangeType.UPDATED && checkDiff(diff, ['meta.notes']) ? (
+              <DiffText newText={diffNotes.right} oldText={diffNotes.left} />
+            ) : (
+              notes
+            )}
+          </div>
+        );
+      },
+      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
+    },
   ].filter((col) => (isDiffShowing ? true : col.id !== 'compare'));
 
   const containerRef = React.createRef<HTMLDivElement>();
