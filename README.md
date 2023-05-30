@@ -24,7 +24,7 @@ To run the docs site requires the following:
 
 Move into the website directory ...
 
-`cd argo-docs/website`
+`cd website`
 
 ...and install dependencies via npm:
 
