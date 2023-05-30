@@ -1,4 +1,4 @@
-import argo from '@icgc-argo/uikit/theme/defaultTheme';
+import defaultTheme from '@icgc-argo/uikit/theme/defaultTheme';
 import { ChangeType } from '../../../../types';
 import { TagVariant } from '../../../components/Tag';
 
@@ -35,7 +35,7 @@ const tag: { [k in TagVariant]: string } = {
  * for now keep passing through all of uikit default theme
  */
 const theme = {
-  ...argo,
+  ...defaultTheme,
   diffColors,
   tag,
 };

@@ -56,7 +56,7 @@ import CompareLegend, { generateComparisonCounts } from '../../components/Compar
 import Row from '../../components/Row';
 import VersionSelect from '../../components/VersionSelect';
 import EmotionThemeProvider from '../../styles/EmotionThemeProvider';
-import argoTheme from '../../styles/theme/icgc-argo';
+import cmTheme from '../../styles/theme/cancermodels';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Dictionary from '../../components/Dictionary';
@@ -148,7 +148,7 @@ function DictionaryPage() {
   const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
 
   const downloadTsvFileTemplate = (fileName) =>
-    window.location.assign(`${GATEWAY_API_ROOT}clinical/template/${fileName}`);
+    window.location.assign(`static/assets/metadata_template.xlsx`);
 
   // filter schemas
   const filteredSchemas = React.useMemo(
@@ -202,7 +202,7 @@ function DictionaryPage() {
   const menuContents = generateMenuContents(filteredSchemas);
 
   return (
-    <EmotionThemeProvider theme={argoTheme}>
+    <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
 
       <Layout permalink="dictionary">

@@ -60,7 +60,7 @@ const CodeList = ({
   const fullOutput = codeList.map((code) => <Code key={code} code={code} format={null} />);
 
   return (
-    <div className={styles.codeList}>
+    <div className={styles.codeList}>Any of the following: <br></br>
       {fullOutput.length <= maxEnumLength ? (
         <div>{fullOutput}</div>
       ) : !isExpanded ? (

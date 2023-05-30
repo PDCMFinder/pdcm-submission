@@ -35,7 +35,7 @@ import { styled } from '@icgc-argo/uikit';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Icon from '@icgc-argo/uikit/Icon';
 import { useTheme } from 'emotion-theming';
-import { Theme } from '../../styles/theme/icgc-argo';
+import { Theme } from '../../styles/theme/cancermodels';
 import { Script } from './TableComponents';
 import Modal from '../Modal';
 import Typography from '@icgc-argo/uikit/Typography';
@@ -76,20 +76,12 @@ const FieldsTag = ({ fieldCount }) => (
 
 const FileExample = ({ name }) => (
   <div>
-    File Name Example:{' '}
+    Sheet Name Example:{' '}
     <span
       css={css`
         font-weight: 600;
       `}
     >{`${name}`}</span>
-    [-optional-extension]
-    <span
-      css={css`
-        font-weight: 600;
-      `}
-    >
-      .tsv
-    </span>
   </div>
 );
 
@@ -303,29 +295,6 @@ const SchemaView = ({
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
     {
-      Header: 'Data Tier',
-      Cell: ({ original }) => {
-        const { meta = {}, diff, changeType } = original;
-
-        const hasDiff = checkDiff(diff, ['meta.core', 'meta.primaryId']);
-
-        const tier = getDataTier(meta.primaryId, meta.core);
-
-        return changeType === ChangeType.UPDATED && hasDiff ? (
-          <DiffText
-            newText={TAG_DISPLAY_NAME[getDataTier(diff.meta.primaryId.right, diff.meta.core.right)]}
-            oldText={TAG_DISPLAY_NAME[getDataTier(diff.meta.primaryId.left, diff.meta.core.left)]}
-          />
-        ) : changeType === ChangeType.DELETED ? (
-          TAG_DISPLAY_NAME[tier]
-        ) : (
-          <Tag variant={tier} />
-        );
-      },
-      style: { padding: '8px' },
-      width: 85,
-    },
-    {
       Header: 'Attributes',
       id: 'attributes',
       Cell: ({ original }) => {
@@ -455,12 +424,12 @@ const SchemaView = ({
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
     {
-      Header: 'Notes & Scripts',
+      Header: 'Notes',
       Cell: ({ original: { name, meta, restrictions, diff, changeType } }) => {
-        const notes = meta && meta.notes;
-        const script = restrictions && restrictions.script;
-        const diffScript = get(diff, 'restrictions.script');
-        const diffNotes = get(diff, 'meta.notes');
+        const notes = meta && meta.format;
+        //const script = restrictions && restrictions.script;
+        //const diffScript = get(diff, 'meta.format');
+        const diffNotes = get(diff, 'meta.format');
 
         return (
           <div>
@@ -469,18 +438,6 @@ const SchemaView = ({
             ) : (
               notes
             )}
-            {script && changeType === ChangeType.DELETED ? (
-              <Button variant="secondary" size="sm" disabled>
-                View Scripts
-              </Button>
-            ) : script || diffScript ? (
-              <Script
-                name={name}
-                script={script}
-                diff={diffScript}
-                showScript={setCurrentShowingScripts}
-              />
-            ) : null}
           </div>
         );
       },

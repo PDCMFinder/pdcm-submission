@@ -76,14 +76,6 @@ const FileFilters = ({
         ) : null}
 
         <Filter
-          label="Data Tier"
-          ariaLabel="Data Tier Select"
-          options={[DEFAULT_FILTER, ...tiers]}
-          value={searchParams.tier}
-          onChange={onSelect('tier')}
-        />
-
-        <Filter
           label="Attribute"
           ariaLabel="Data Attribute Select"
           options={[DEFAULT_FILTER, ...attributes]}
