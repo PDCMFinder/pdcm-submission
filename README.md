@@ -21,16 +21,26 @@ To run the docs site requires the following:
 - NodeJS version 12.13+
   - This is done best using nvm (node version manager). A good summary of this process can be found here for your reference: https://gist.github.com/d2s/372b5943bce17b964a79
 
+## Installation and setup
 
-Move into the website directory ...
+- Move into the website directory ...
 
 `cd website`
 
-...and install dependencies via npm:
+- ...and install dependencies via npm:
 
 `npm ci`
 
-Run the development server to see your edits live in the browser:
+- Setup Environment config:
+
+Copy the file /website/.env.example to /website/.env
+
+> Note
+> This file contains the configuration for the Algolia search used on the site. It is not necessary to set correct values for this config to get the site to run. If you would like to have working Algolia search on while working on your local dev instance, reach out to another team member for the account values.
+
+
+
+- Run the development server to see your edits live in the browser:
 
 `npm start`
 
