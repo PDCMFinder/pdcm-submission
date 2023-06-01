@@ -33,7 +33,7 @@ To run the docs site requires the following:
 
 - Setup Environment config:
 
-Copy the file `/website/.env.example` to `/website/.env`
+    Copy the file `/website/.env.example` to `/website/.env`
 
 > Note
 > 
