@@ -33,9 +33,10 @@ To run the docs site requires the following:
 
 - Setup Environment config:
 
-Copy the file /website/.env.example to /website/.env
+Copy the file `/website/.env.example` to `/website/.env`
 
 > Note
+> 
 > This file contains the configuration for the Algolia search used on the site. It is not necessary to set correct values for this config to get the site to run. If you would like to have working Algolia search on while working on your local dev instance, reach out to another team member for the account values.
 
 
