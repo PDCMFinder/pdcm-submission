@@ -20,13 +20,13 @@
 
 const path = require('path');
 
+
 module.exports = {
   title: 'CancerModels.org: Data dictionary',
   url: 'https://www.cancermodels.org/',
   baseUrl: '/',
   organizationName: 'CancerModels.org',
   projectName: 'cancermodels.org-data-dictionary',
-
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -36,7 +36,6 @@ module.exports = {
   stylesheets: ['https://fonts.googleapis.com/css?family=Source+Code+Pro|Work+Sans&display=swap'],
 
   plugins: [path.resolve(__dirname, './dotenv-plugin')],
-
   scripts: ['https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js'],
 
   presets: [
@@ -77,7 +76,9 @@ module.exports = {
       items: [{ to: 'dictionary', label: 'Data Dictionary', position: 'right' }],
     },
     footer: {
-      logo: {},
+      logo: {
+        src: 'img/logos/icgc_argo_name_stacked.svg'
+      },
       copyright: `© ${new Date().getFullYear()} CancerModels.org. All Rights reserved.`,
     },
   },
