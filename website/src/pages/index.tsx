@@ -27,7 +27,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 import Typography from '@icgc-argo/uikit/Typography';
-import StyleWrapper from '../../components/StyleWrapper';
+import StyleWrapper from '../components/StyleWrapper';
 import FileFilters, {
   NO_ACTIVE_FILTER,
   generateFilter,
@@ -38,30 +38,30 @@ import FileFilters, {
   comparisonFilter,
   defaultSearchParams,
   DEFAULT_FILTER,
-} from '../../components/FileFilters';
-import TreeView from '../../components/TreeView';
+} from '../components/FileFilters';
+import TreeView from '../components/TreeView';
 import startCase from 'lodash/startCase';
 import Modal from '@icgc-argo/uikit/Modal';
-import SchemaMenu from '../../components/ContentMenu';
-import { Display, DownloadTooltip, DownloadButtonContent } from '../../components/common';
-import { getLatestVersion } from '../../utils';
+import SchemaMenu from '../components/ContentMenu';
+import { Display, DownloadTooltip, DownloadButtonContent } from '../components/common';
+import { getLatestVersion } from '../utils';
 import Tabs, { Tab } from '@icgc-argo/uikit/Tabs';
-import { StyledTab, TAB_STATE } from '../../components/Tabs';
-import Meta from '../../components/Meta';
+import { StyledTab, TAB_STATE } from '../components/Tabs';
+import Meta from '../components/Meta';
 import Icon from '@icgc-argo/uikit/Icon';
 import OldButton from '@icgc-argo/uikit/Button';
-import Button from '../../components/Button';
-import { ResetButton } from '../../components/Button';
-import CompareLegend, { generateComparisonCounts } from '../../components/CompareLegend';
-import Row from '../../components/Row';
-import VersionSelect from '../../components/VersionSelect';
-import EmotionThemeProvider from '../../styles/EmotionThemeProvider';
-import cmTheme from '../../styles/theme/cancermodels';
+import Button from '../components/Button';
+import { ResetButton } from '../components/Button';
+import CompareLegend, { generateComparisonCounts } from '../components/CompareLegend';
+import Row from '../components/Row';
+import VersionSelect from '../components/VersionSelect';
+import EmotionThemeProvider from '../styles/EmotionThemeProvider';
+import cmTheme from '../styles/theme/cancermodels';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import Dictionary from '../../components/Dictionary';
-import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
-import { ChangeType, Schema } from '../../../types';
+import Dictionary from '../components/Dictionary';
+import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../helpers/schema';
+import { ChangeType, Schema } from '../../types';
 
 const InfoBar = styled('div')`
   display: flex;
