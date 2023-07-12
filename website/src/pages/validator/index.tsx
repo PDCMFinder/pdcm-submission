@@ -26,7 +26,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from './styles.module.css';
+import styles from '../styles.module.css';
 import Typography from '@icgc-argo/uikit/Typography';
 import StyleWrapper from '../../components/StyleWrapper';
 import FileFilters, {
