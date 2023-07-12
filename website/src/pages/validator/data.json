@@ -1,0 +1,14 @@
+{
+    "date":"2023-07-05T15:26:23.660Z",
+    "fileName":"data.xlsx",
+    "status":"valid",
+    "dictionaryName":"CancerModels_Dictionary",
+    "dictionaryVersion":"1.0",
+    "sheetsValidationResults":[
+        {"sheetName":"patient","schema":"patient","status":"valid","result":[]},
+        {"sheetName":"patient_sample","schema":"patient_sample","status":"valid","result":[]},
+        {"sheetName":"pdx_model","schema":"pdx_model","status":"valid","result":[]},
+        {"sheetName":"model_validation","schema":"model_validation","status":"valid","result":[]},
+        {"sheetName":"cell_model","schema":"cell_model","status":"valid","result":[]},
+        {"sheetName":"sharing","schema":"sharing","status":"valid","result":[]}]
+}

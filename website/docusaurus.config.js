@@ -73,7 +73,8 @@ module.exports = {
         alt: 'CancerModels.org',
         src: 'img/logos/icgc_argo_name_stacked.svg',
       },
-      items: [{ to: 'dictionary', label: 'Data Dictionary', position: 'right' }],
+      items: [{ to: 'dictionary', label: 'Data Dictionary', position: 'right' }, 
+              { to: 'validator', label: 'Validator', position: 'right' }],
     },
     footer: {
       logo: {

@@ -113,8 +113,8 @@ const handleChange = (event) => {
   for (const file of inputFile.files) {
     formData.append("file", file);
   }
-  console.log(formData.getAll('file'));
-  console.log(validateExcelData(file));
+  //console.log(formData);
+  //console.log(handleSubmit(event));
   form.addEventListener("submit", handleSubmit);
 }
 
@@ -133,10 +133,15 @@ const handleSubmit = async (event) => {
     method: "POST",
     headers: new Headers(),
     body: formData,
-    }).then(response => {console.log(response)})
+    }).then(response => {return response.json()})
     .catch((error) => ("Something went wrong!", error));
-    //document.getElementById("response") = document.getElementById("upload-form").value;
-  console.log(document.getElementById("upload-form").value);
+    //
+    //console.log(document.getElementById("upload-form").value);
+  //console.log(results);
+  document.getElementById("response").innerHTML = JSON.stringify(results);
+
+  
+
 };
 //
 

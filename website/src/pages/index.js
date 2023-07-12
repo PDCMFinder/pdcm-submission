@@ -92,6 +92,20 @@ function Index() {
                 <img src="img/icons/chevron-right.svg" height={8} width={8} />
               </a>
             </ContentBlock>
+            <ContentBlock
+              title="Validator"
+              color="#4bcee5"
+              icon="img/icons/search.svg"
+            >
+              <span className={styles.contentDescription}>
+                The validator helps in data validation against the schema
+                which data submitters can use for formatting and validating their data files.
+              </span>
+              <a className={styles.contentAction} href="/validator">
+                Validator
+                <img src="img/icons/chevron-right.svg" height={8} width={8} />
+              </a>
+            </ContentBlock>
           </div>
         </div>
       </div>
