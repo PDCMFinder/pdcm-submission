@@ -29,7 +29,7 @@ import CodeList, { Code } from './CodeList';
 import Regex, { RegexExamples } from './Regex';
 import startCase from 'lodash/startCase';
 import { DataTypography, SchemaTitle } from '../Typography';
-import { ModalPortal } from '../../pages/';
+import { ModalPortal } from '../../pages/dictionary';
 import get from 'lodash/get';
 import { styled } from '@icgc-argo/uikit';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
