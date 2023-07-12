@@ -142,7 +142,7 @@ const getTableData = (status, fields) =>
     ? fields
     : fields
         .filter((field) => {
-          return field.status !== 'invalid';
+          return field.status !== '';
         })
         .map((field) => ({ ...field, status: null }));
 

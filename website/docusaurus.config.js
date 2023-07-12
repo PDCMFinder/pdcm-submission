@@ -71,14 +71,14 @@ module.exports = {
       title: '',
       logo: {
         alt: 'CancerModels.org',
-        src: 'img/logos/icgc_argo_name_stacked.svg',
+        src: 'img/logos/CancerModelsLogo.svg',
       },
       items: [{ to: 'dictionary', label: 'Data Dictionary', position: 'right' }, 
               { to: 'validator', label: 'Validator', position: 'right' }],
     },
     footer: {
       logo: {
-        src: 'img/logos/icgc_argo_name_stacked.svg'
+        src: 'img/logos/CancerModelsLogo.svg'
       },
       copyright: `© ${new Date().getFullYear()} CancerModels.org. All Rights reserved.`,
     },
