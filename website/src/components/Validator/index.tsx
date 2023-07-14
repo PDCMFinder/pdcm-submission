@@ -4,7 +4,7 @@ import startCase from 'lodash/startCase';
 import Schema from '../Validator/validatorSchema';
 
 const Validator = ({ schemas, menuContents, isDataInvalid }) =>
-  schemas.length > 0 && isDataInvalid=='invalid'? (
+  schemas.length > 100 && isDataInvalid=='invalid'? (
     schemas.map((schema) => {
       if(schema.status=="invalid"){
         const menuItem = find(menuContents, { name: startCase(schema.sheetName) });
