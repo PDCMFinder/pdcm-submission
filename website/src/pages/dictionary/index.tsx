@@ -125,7 +125,7 @@ function DictionaryPage() {
   const [isDiffShowing, setIsDiffShowing] = useState(false);
 
   const [activeSchemas, setActiveSchemas] = useState<Schema[]>(preloadedDictionary.data.schemas);
-
+  console.log(activeSchemas);
   // Check if current schema is the latest version
   const isLatestSchema = getLatestVersion() === version ? true : false;
 
@@ -200,7 +200,7 @@ function DictionaryPage() {
 
   // Menu Contents
   const menuContents = generateMenuContents(filteredSchemas);
-
+  
   return (
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />

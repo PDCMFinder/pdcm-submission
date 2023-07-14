@@ -458,7 +458,7 @@ const SchemaView = ({
   });
 
   const tableData = getTableData(isDiffShowing, schema.fields);
-
+  
   const getDataTier = (primaryId: boolean, core: boolean): TagVariant => {
     return primaryId ? TagVariant.ID : core ? TagVariant.CORE : TagVariant.EXTENDED;
   };

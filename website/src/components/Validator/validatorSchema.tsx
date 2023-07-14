@@ -40,7 +40,7 @@ import Typography from '@icgc-argo/uikit/Typography';
 import CodeBlock, { CompareCodeBlock } from '../CodeBlock';
 import { css } from '@emotion/core';
 import union from 'lodash/union';
-import { ChangeType, Schema } from '../../../types';
+import { ChangeType, resultSchema } from '../../../types';
 import Button from '../Button';
 import { compareText } from '../CompareLegend';
 
@@ -71,22 +71,11 @@ const FieldsTag = ({ fieldCount }) => (
   >{`${fieldCount} Field${fieldCount > 1 ? 's' : ''}`}</DefaultTag>
 );
 
-const FileExample = ({ name }) => (
-  <div>
-    Sheet Name Example:{' '}
-    <span
-      css={css`
-        font-weight: 600;
-      `}
-    >{`${name}`}</span>
-  </div>
-);
 
-
-type SchemaMetaProps = { schema: Schema; fieldCount: number; status: boolean };
+type SchemaMetaProps = { schema: resultSchema; fieldCount: number; status: string };
 
 const SchemaMeta = ({ schema, fieldCount, status }: SchemaMetaProps) => {
-  const { name, changeType, description, diff } = schema;
+  const { sheetName } = schema;
   return (
     <div css={(theme) => status}>
       <div
@@ -97,7 +86,7 @@ const SchemaMeta = ({ schema, fieldCount, status }: SchemaMetaProps) => {
           margin-bottom: 11px;
         `}
       >
-        <HeaderName name={name} />
+        <HeaderName name={sheetName} />
         <FieldsTag fieldCount={fieldCount} />
       </div>
 
@@ -110,31 +99,12 @@ const SchemaMeta = ({ schema, fieldCount, status }: SchemaMetaProps) => {
           align-items: flex-start;
         `}
       >         
-        {/* <DownloadTooltip disabled={isLatestSchema}>
-          <div style={{ marginLeft: '50px', alignSelf: 'flex-start' }}>
-            <Button
-              disabled={!isLatestSchema}
-              variant="secondary"
-              size="sm"
-              onClick={() => downloadTsvFileTemplate(`${schema.name}.tsv`)}
-            >
-              <DownloadButtonContent disabled={!isLatestSchema}>
-                File Template
-              </DownloadButtonContent>
-            </Button>
-          </div>
-        </DownloadTooltip> */}
       </div>
     </div>
   );
 };
 
-/**
- *
- * @param diff
- * @param fields
- * Check if all fields present in diff object
- */
+
 
 // TODO: dont like this, cells should render based on isDiffShowing
 const getTableData = (status, fields) =>
@@ -142,7 +112,7 @@ const getTableData = (status, fields) =>
     ? fields
     : fields
         .filter((field) => {
-          return field.status !== '';
+          return field.status == 'invalid';
         })
         .map((field) => ({ ...field, status: null }));
 
@@ -151,9 +121,9 @@ const SchemaView = ({
   menuItem,
   isDataInvalid,
 }: {
-  schema: Schema;
+  schema: resultSchema;
   menuItem: any;
-  isDataInvalid: boolean;
+  isDataInvalid: string;
 }) => {
   const context = useDocusaurusContext();
   const {
@@ -169,51 +139,19 @@ const SchemaView = ({
    */
   const initialExpandingFields = useMemo(
     () =>
-      schema.fields.reduce((acc, val) => {
-        acc[val.name] = false;
+      schema.result.reduce((acc, val) => {
+        acc[val.fieldName] = false;
         return acc;
       }, {}),
     [schema],
   );
 
-  const [expandedCodeLists, setExpandedCodeLists] = useState(initialExpandingFields);
-
-  useEffect(() => {
-    setExpandedCodeLists(initialExpandingFields);
-  }, [schema]);
-
-  const onCodelistExpandToggle = (field) => () =>
-    setExpandedCodeLists({ ...expandedCodeLists, [field]: !expandedCodeLists[field] });
-
-  const isCodeListExpanded = (field) => expandedCodeLists[field];
 
   const [currentShowingScript, setCurrentShowingScripts] = React.useState<{
     diff?: { left: string[]; right: string[] };
     content?: string[];
     fieldName: string;
   }>(null);
-
-  const ComparisonCell = styled('div')`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    position: relative;
-    top: 8px;
-    font-weight: bold;
-    box-sizing: unset;
-    svg {
-      margin-right: 3px;
-      flex-shrink: 0;
-    }
-
-    span {
-      position: relative;
-      top: 1px;
-    }
-  `;
-
-  const StarIcon = (props) => <Icon name="star" width="16px" height="16px" {...props} />;
 
   const cols = [
     {
@@ -304,7 +242,7 @@ const SchemaView = ({
       style: { padding: '8px' },
       width: 102,
     }
-  ].filter((col) => (isDataInvalid ? true : col.id !== 'compare'));
+  ].filter((col) => (isDataInvalid=='invalid' ? true : col.id !== 'compare'));
 
   const containerRef = React.createRef<HTMLDivElement>();
 
@@ -318,10 +256,8 @@ const SchemaView = ({
     },
   });
 
-  const tableData = getTableData(status, schema.fields);
-
-
-
+  const tableData = getTableData(schema.status, schema.result);
+  console.log(tableData);
   return (
     <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
       {currentShowingScript && (
@@ -357,12 +293,13 @@ const SchemaView = ({
         </ModalPortal>
       )}
 
-      
+    <SchemaMeta schema={schema} fieldCount={schema.result.length} status={schema.status} />
+
       <div ref={containerRef}>
         <Table
           getTrProps={(state, rowInfo) => {
-            const changeType = rowInfo.original.changeType;
-            return changeType ? highlightRowDiff(changeType) : {};
+            const status = rowInfo.original.status;
+            return status;
           }}
           withRowBorder
           parentRef={containerRef}

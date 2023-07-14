@@ -26,7 +26,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from '../styles.module.css';
+import styles from './styles.module.css';
 import Typography from '@icgc-argo/uikit/Typography';
 import StyleWrapper from '../../components/StyleWrapper';
 import FileFilters, {
@@ -103,7 +103,7 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 
-const data = require('./data.json');
+let data = require('./data.json');
 //const [activeSchemas, setActiveSchemas] = useState<resultSchema[]>(data.sheetsValidationResults);
 
 //const preloadedDictionary = { data: data.dictionary, version: data.currentVersion.version };
@@ -120,10 +120,26 @@ function validatorPage() {
     },
   } = context;
   const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
-  const isDataInvalid = true;
-  const filteredSchemas = ""//[activeSchemas, true, ""];
-  const menuContents = ""//require('./data.json');
+  
+  const activeResult = {result: data.sheetsValidationResults, status: data.status};//[activeSchemas, true, ""];
+  const filteredResult = activeResult.result;
+  const isDataInvalid = activeResult.status;
+  
+  const generateMenuContents = (activeSchemas) => {
+    const activeSchemaNames = activeSchemas.map((s) => s.sheetName);
+    return activeSchemas.map((schema) => ({
+      key: schema.sheetName,
+      name: startCase(schema.sheetName),
+      contentRef: createRef(),
+      active: false,
+      disabled: !activeSchemaNames.includes(schema.sheetName),
+    }));
+  };
 
+  // Menu Contents
+  const menuContents = generateMenuContents(filteredResult);
+  //const menuContents = ""//require('./data.json');
+  //console.log(activeSchemas);
   return (
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
@@ -159,6 +175,8 @@ function validatorPage() {
       <div>
             <div id="response">
              <table id='validation'></table> 
+            </div>
+            <div> 
             <Display visible={selectedTab === TAB_STATE.DETAILS}>
                 <div
                   css={css`
@@ -166,7 +184,7 @@ function validatorPage() {
                   `}
                 >
                   <Validator
-                    schemas={filteredSchemas}
+                    schemas={filteredResult}
                     menuContents={menuContents}
                     isDataInvalid={isDataInvalid}
                   />

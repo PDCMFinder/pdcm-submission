@@ -11,21 +11,28 @@ RUN cd website && npm ci --legacy-peer-deps && npm run build
 FROM nginx:alpine
 
 # needs shadow to get usermod and groupmod
-RUN apk --no-cache add shadow
+# RUN apk --no-cache add shadow
+
+# Build the React app
+RUN npm run build
+
+# Set the command to run when the container starts
+CMD ["npm", "start"]
+
 # we're using numeric user to match kubernetes
-RUN usermod -u 9999 nginx
-RUN groupmod -g 9999 nginx
+# RUN usermod -u 9999 nginx
+# RUN groupmod -g 9999 nginx
 
-COPY --from=0 /app/website/build /usr/share/nginx/html
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-RUN chown -R nginx:nginx /var/cache/nginx
-RUN chown -R nginx:nginx /var/log/nginx
-RUN chown -R nginx:nginx /etc/nginx/conf.d
-RUN touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
+# COPY --from=0 /app/website/build /usr/share/nginx/html
+# COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+# COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+# RUN chown -R nginx:nginx /var/cache/nginx
+# RUN chown -R nginx:nginx /var/log/nginx
+# RUN chown -R nginx:nginx /etc/nginx/conf.d
+# RUN touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
 
-USER 9999
+# USER 9999
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
