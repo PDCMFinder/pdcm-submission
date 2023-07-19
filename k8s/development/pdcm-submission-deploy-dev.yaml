@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pdcm-data-submission-docs-dev
+  name: pdcm-submission-dev
   namespace: pdcm-validator-dev
 spec:
   replicas: 1  # Number of replicas/pods to run
   selector:
     matchLabels:
-      app: pdcm-data-submission-docs-dev
+      app: pdcm-submission-dev
   template:
     metadata:
       labels:
-        app: pdcm-data-submission-docs-dev
+        app: pdcm-submission-dev
     spec:
       containers:
-        - name: pdcm-data-submission-docs
-          image: pdxfinder/pdcm-data-submission-docs:develop
+        - name: pdcm-submission
+          image: pdxfinder/pdcm-submission:develop
           ports:
             - containerPort: 3000  # Port your Docusaurus app is listening on

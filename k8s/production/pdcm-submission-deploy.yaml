@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdcm-submission
+  namespace: pdcm-validator
+spec:
+  replicas: 1  # Number of replicas/pods to run
+  selector:
+    matchLabels:
+      app: pdcm-submission
+  template:
+    metadata:
+      labels:
+        app: pdcm-submission
+    spec:
+      containers:
+        - name: pdcm-submission
+          image: pdxfinder/pdcm-submission:main
+          ports:
+            - containerPort: 3000  # Port your Docusaurus app is listening on
