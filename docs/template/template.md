@@ -6,7 +6,10 @@ sidebar_label: Optional Sidebar Title - Remove if same as title
 
 ## Docusaurus Style Links
 
+<<<<<<< HEAD
+=======
 This is a link to [another document.](/dictionary)  
+>>>>>>> develop
 This is a link to an [external page.](http://www.example.com)
 
 ## Markdown Cheatsheet

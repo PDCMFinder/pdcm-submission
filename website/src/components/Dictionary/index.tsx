@@ -7,7 +7,8 @@ const Dictionary = ({ schemas, menuContents, isLatestSchema, isDiffShowing }) =>
   schemas.length > 0 ? (
     schemas.map((schema) => {
       const menuItem = find(menuContents, { name: startCase(schema.name) });
-
+      //console.log("MenuItem: ");
+      //console.log(menuItem);
       return (
         <Schema
           key={schema.name}

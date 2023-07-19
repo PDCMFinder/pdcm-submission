@@ -5,6 +5,28 @@ interface Dictionary {
   updatedAt: string;
   version: string;
 }
+export interface validationResults {
+  date: string;
+  filename: string;
+  status: string;
+  dictionaryVersion: string;
+  dictionaryName: string;
+  sheetsValidationResults: resultSchema[];
+}
+export interface resultSchema{
+  sheetName: string;
+  schema: string;
+  status: string;
+  valid: string;
+  result: schemaResult[]
+}
+
+export interface schemaResult{
+  errorType: string;
+  fieldName: string;
+  index: BigInteger;
+  message: string;
+}
 
 export interface Schema {
   changeType: ChangeType;

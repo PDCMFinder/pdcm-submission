@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import Icon from '@icgc-argo/uikit/Icon';
-import ButtonComp, { BUTTON_SIZES, BUTTON_VARIANTS } from '@icgc-argo/uikit/Button';
+import ButtonComp from '@icgc-argo/uikit/Button'
+import { BUTTON_SIZES, BUTTON_VARIANTS } from '@icgc-argo/uikit/Button/constants';
 import { withTheme } from 'emotion-theming';
 import { css } from '@emotion/core';
 

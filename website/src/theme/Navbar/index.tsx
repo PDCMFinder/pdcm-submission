@@ -246,8 +246,8 @@ function Navbar(): JSX.Element {
   const hasSearchNavbarItem = items.some((item) => item.type === 'search');
   const { leftItems, rightItems } = splitNavItemsByPosition(items);
 
-  const logoUrl = useBaseUrl('/img/logos/cancermodels.png');
-  const logoUrlSmall = useBaseUrl('/img/logos/cancermodels.png');
+  const logoUrl = useBaseUrl('/img/logos/CancerModelsLogo.svg');
+  const logoUrlSmall = useBaseUrl('/img/logos/CancerModelsLogo.svg');
 
   return (
     <nav

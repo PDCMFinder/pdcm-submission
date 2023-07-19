@@ -22,8 +22,10 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core';
 import Layout from '@theme/Layout';
-import styles from './styles.module.css';
-import AlgoliaSearch from '../components/AlgoliaSearch';
+import styles from '../styles.module.css';
+import StyleWrapper from '../../components/StyleWrapper';
+//import validateExcelData from '../controllers/validator.controller'
+import AlgoliaSearch from '../../components/AlgoliaSearch';
 
 function HomeSplash() {
   const SplashContainer = (props) => (
@@ -56,6 +58,8 @@ function HomeSplash() {
   );
 }
 
+
+
 class ContentBlock extends React.Component {
   render() {
     const { color, title, icon } = this.props;
@@ -71,46 +75,75 @@ class ContentBlock extends React.Component {
   }
 }
 
-function Index() {
+function validator() {
   return (
-    <Layout permalink="/" title="CancerModels.org - Data dictionary">
-      <div>
-        <HomeSplash />
-        <div className={styles.mainContainer}>
-          <div className={styles.row}>
-            <ContentBlock
-              title="Data Dictionary"
-              color="#4bcee5"
-              icon="img/icons/home/data-dictionary.svg"
-            >
-              <span className={styles.contentDescription}>
-                The dictionary describes the schema that data submitters must conform to and track
-                changes when formatting clinical data files.
-              </span>
-              <a className={styles.contentAction} href="/dictionary">
-                Data Dictionary Viewer
-                <img src="img/icons/chevron-right.svg" height={8} width={8} />
-              </a>
-            </ContentBlock>
-            <ContentBlock
-              title="Validator"
-              color="#4bcee5"
-              icon="img/icons/search.svg"
-            >
-              <span className={styles.contentDescription}>
-                The validator helps in data validation against the schema
-                which data submitters can use for formatting and validating their data files.
-              </span>
-              <a className={styles.contentAction} href="/validator">
-                Validator
-                <img src="img/icons/chevron-right.svg" height={8} width={8} />
-              </a>
-            </ContentBlock>
+    <Layout permalink="validator" title="CancerModels.org - Data validator">
+      <StyleWrapper>
+          <div className={styles.mainContainer}>
+              <div className={styles.heading}>
+                <ContentBlock
+                  title="Data Validator"
+                  color="#4bcee5"
+                  icon="img/icons/home/data-dictionary.svg"
+                ></ContentBlock>
+              </div>
+              <div id='file-upload'>
+                <form id='upload-form' action="http://localhost:3010/validation/upload-excel" method="POST" encType="multipart/form-data"> 
+                <label htmlFor="file">File: </label>
+                <input id="file" name="file" type="file" onChange={handleChange}/> 
+                <input type="submit" value="Upload"/>
+                </form>
+              </div>  
+            <div>
+            <span id="response"></span>  
+            </div>   
+            
           </div>
-        </div>
-      </div>
+      </StyleWrapper>
     </Layout>
   );
 }
 
-export default Index;
+const handleChange = (event) => {
+  const form = document.getElementById("upload-form");
+  const inputFile = document.getElementById("file");
+  const formData = new FormData();
+  event.preventDefault();
+
+  for (const file of inputFile.files) {
+    formData.append("file", file);
+  }
+  //console.log(formData);
+  //console.log(handleSubmit(event));
+  form.addEventListener("submit", handleSubmit);
+}
+
+const handleSubmit = async (event) => {
+  const form = document.getElementById("upload-form");
+  const inputFile = document.getElementById("file");
+  const formData = new FormData();
+  
+  event.preventDefault();
+  
+  for (const file of inputFile.files) {
+    formData.append("file", file);
+  }
+  
+  const results = await fetch("http://localhost:3010/validation/upload-excel", {
+    method: "POST",
+    headers: new Headers(),
+    body: formData,
+    }).then(response => {return response.json()})
+    .catch((error) => ("Something went wrong!", error));
+    //
+    //console.log(document.getElementById("upload-form").value);
+  //console.log(results);
+  document.getElementById("response").innerHTML = JSON.stringify(results);
+
+  
+
+};
+//
+
+
+export default validator;
