@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pdcm-data-submission-docs-dev-service
+  name: pdcm-submission-dev-service
   labels:
-    app: pdcm-data-submission-docs-dev
+    app: pdcm-submission-dev
   namespace: pdcm-validator-dev
 spec:
   selector:
-    app: pdcm-data-submission-docs-dev
+    app: pdcm-submission-dev
   ports:
     - protocol: TCP
       port: 3000  # Port to expose on the Service
