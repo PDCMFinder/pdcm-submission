@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdcm-data-submission-docs-dev-service
+  labels:
+    app: pdcm-data-submission-docs-dev
+  namespace: pdcm-validator-dev
+spec:
+  selector:
+    app: pdcm-data-submission-docs-dev
+  ports:
+    - protocol: TCP
+      port: 3000  # Port to expose on the Service
+      targetPort: 3000  # Port your Docusaurus app is listening on inside the container
+      nodePort: 30239
+  type: NodePort
+status:
+  loadBalancer: {}  # Expose the Service using a LoadBalancer (for public access)

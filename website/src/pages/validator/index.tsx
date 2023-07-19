@@ -132,7 +132,7 @@ function validatorPage() {
       name: startCase(schema.sheetName),
       contentRef: createRef(),
       active: false,
-      disabled: !activeSchemaNames.includes(schema.sheetName),
+      disabled: !activeSchemaNames.includes(schema.name),
     }));
   };
 
@@ -214,7 +214,7 @@ const handleSubmit = async (event) => {
   event.preventDefault();
   formData.append("file", inputFile);
   
-  const results = await fetch("http://localhost:3010/validation/upload-excel", {
+  const results = await fetch("http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel", {
     method: "POST",
     headers: new Headers(),
     body: formData,
