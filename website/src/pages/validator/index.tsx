@@ -48,7 +48,7 @@ import { Display, DownloadTooltip, DownloadButtonContent } from '../../component
 import { getLatestVersion } from '../../utils';
 import Tabs, { Tab } from '@icgc-argo/uikit/Tabs';
 import { StyledTab, TAB_STATE } from '../../components/Tabs';
-import Meta from '../../components/Meta';
+import MetaValidation from '../../components/MetaValidation';
 import Icon from '@icgc-argo/uikit/Icon';
 import OldButton from '@icgc-argo/uikit/Button';
 import Button from '../../components/Button';
@@ -72,6 +72,8 @@ const InfoBar = styled('div')`
   border-bottom: 2px solid #dcdde1;
   padding-bottom: 8px;
 `;
+
+
 
 export const useModalState = () => {
   const [visibility, setVisibility] = useState(false);
@@ -102,14 +104,8 @@ export const ModalPortal = ({ children }) => {
       )
     : null;
 };
-
-let data = require('./data.json');
-//const [activeSchemas, setActiveSchemas] = useState<resultSchema[]>(data.sheetsValidationResults);
-
-//const preloadedDictionary = { data: data.dictionary, version: data.currentVersion.version };
-
-// versions
-//const versions: Array<{ version: string; date: string }> = data.versions;
+const data = require('./data.json')
+const activeResult = {result: data.sheetsValidationResults, status: data.status};//[activeSchemas, true, ""];
 
 function validatorPage() {
   // docusaurus context
@@ -119,12 +115,14 @@ function validatorPage() {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
     },
   } = context;
-  const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
-  
-  const activeResult = {result: data.sheetsValidationResults, status: data.status};//[activeSchemas, true, ""];
-  const filteredResult = activeResult.result;
-  const isDataInvalid = activeResult.status;
-  
+  const [selectedTab, setSelectedTab] = useState(TAB_STATE.DETAILS);
+  let [fileSubmitted, setFileSubmitted] = useState<string>("no");
+    
+  const [filteredResult, setFilteredResult] = useState(activeResult.result);
+  const [isDataInvalid, setisDataInvalid] = useState(activeResult.status);
+  const [date, setDate] = useState(data.date);
+  const [dictionaryName, setDictionaryName] = useState(data.dictionaryName);
+  const [dictionaryVersion, setDictionaryVersion] = useState(data.dictionaryVersion);
   const generateMenuContents = (activeSchemas) => {
     const activeSchemaNames = activeSchemas.map((s) => s.sheetName);
     return activeSchemas.map((schema) => ({
@@ -135,12 +133,52 @@ function validatorPage() {
       disabled: !activeSchemaNames.includes(schema.name),
     }));
   };
+  // Handle upload file:
+  const handleChange = (event) => {
+    const form = document.getElementById("upload-form");
+    event.preventDefault();
+    form.addEventListener("submit", handleSubmit);
+  }
 
+  //Handle submit data:
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if(event.target[0].files.length > 0){
+      const form = document.getElementById("upload-form");
+      const inputFile = event.target[0].files[0]
+      const formData = new FormData();
+      event.preventDefault();
+      formData.append("file", inputFile);
+      
+      const results = await fetch("http://localhost:3010/validation/upload-excel", {
+        method: "POST",
+        headers: new Headers(),
+        body: formData,
+        }).then(response => {return response.json()})
+        .catch((error) => (error));
+      //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
+      if(results.hasOwnProperty("status")){
+        setFileSubmitted("yes");
+        setFilteredResult(results.sheetsValidationResults);
+        setisDataInvalid(results.status); 
+        setDate(results.date);
+        //const dictionaryNameVersion = results.dictionaryName +": "+results.dictionaryVersion;
+        setDictionaryName(results.dictionaryName);
+        setDictionaryVersion(results.dictionaryVersion);
+      }
+      const formTable = <div id="repsonse">
+      <div className={styles.heading}>
+      Date submitted: {results.date}<br></br> 
+      Validation status: {results.status}<br></br>
+      Dictionary: {results.dictionaryName} (Version: {results.dictionaryVersion})<br></br>
+      </div>
+                  {}
+      </div>;
+    }
+  };
   // Menu Contents
   const menuContents = generateMenuContents(filteredResult);
-  //const menuContents = ""//require('./data.json');
-  //console.log(filteredResult);
-  //console.log(menuContents);
+  
   return (
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
@@ -162,7 +200,7 @@ function validatorPage() {
                   Data validator
                 </Typography>
                 <div id='file-upload'>
-                  <form id='upload-form' method="POST" encType="multipart/form-data"> 
+                  <form id='upload-form' encType="multipart/form-data" onSubmit={handleSubmit}> 
                     <label htmlFor="file">File: 
                     
                     <input id="file" name="file" type="file" onChange={handleChange}/> 
@@ -177,7 +215,12 @@ function validatorPage() {
               <InfoBar>
                 
                 </InfoBar>
-              <div id='validator'> 
+              <div id='validator'>
+            <Display visible={fileSubmitted == "yes"}>
+              <Row>
+                <MetaValidation date={date} status={isDataInvalid} dictionaryName={dictionaryName} dictionaryVersion={dictionaryVersion}></MetaValidation>
+              </Row>
+              </Display> 
             <Display visible={selectedTab === TAB_STATE.DETAILS}>
                 <div
                   css={css`
@@ -188,6 +231,7 @@ function validatorPage() {
                     schemas={filteredResult}
                     menuContents={menuContents}
                     isDataInvalid={isDataInvalid}
+                    fileSubmitted={fileSubmitted}
                   />
                 </div>
               </Display>  
@@ -200,97 +244,6 @@ function validatorPage() {
     </EmotionThemeProvider>
   );
 }
-const handleChange = (event) => {
-  const form = document.getElementById("upload-form");
-  const inputFile = event.target.files[0];
-  const formData = new FormData();
-  event.preventDefault();
-  formData.append("file", inputFile);
-  //console.log(handleSubmit(event));
-  form.addEventListener("submit", handleSubmit);
-}
 
-const handleSubmit = async (event) => {
-  const form = document.getElementById("upload-form");
-  event.preventDefault();
-  const inputFile = event.target[0].files[0]
-  const formData = new FormData();
-  event.preventDefault();
-  formData.append("file", inputFile);
-  
-  const results = await fetch("http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel", {
-    method: "POST",
-    headers: new Headers(),
-    body: formData,
-    }).then(response => {return response.json()})
-    .catch((error) => (error));
-  //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
-  const resultTable = results.sheetsValidationResults.map((info, i)=>{if(info.status=="invalid"){
-    return(
-    <div key={i}  
-    css={css`
-    font-weight: 600;
-    margin-top: 30px;
-    width: 100%;
-    top: 8px;
-    font-weight: bold;
-  `}>
-      {info.sheetName}
-<div><br></br>      
-          <table key={i} css={css`
-    font-weight: 300;
-  `}>
-          <thead>
-                   <tr>
-                   <th>Index</th>
-                   <th>Field name</th>
-                   <th>Value</th>
-                   <th>Error type</th>
-                   <th>Error message</th>
-                   </tr>
-               </thead>
-               <tbody>
-                  {info.result.map((data, j)=>{return(
-                    <tr key={j}>
-                    <td>{data.index}</td>
-                    <td>{data.fieldName}</td>
-                    <td>{data.info.value}</td>
-                    <td>{data.errorType}</td>
-                    <td>{data.message}</td>
-                    </tr>
-                  )})}
-               </tbody>
-         </table>
-         </div>
-    </div>   
-)}else{
-  return(
-    <div key={i}  css={css`
-    font-weight: 600;
-    margin-top: 30px;
-    width: 100%;
-    top: 8px;
-    font-weight: bold;
-  `}>
-      {info.sheetName}<div css={css`
-              font-weight: 300;
-            `}>
-      Sheet is valid!
-        </div></div>
-      
-  )
-}
-});
-
-const formTable = <div id="repsonse">
-  <div className={styles.heading}>
-  Date submitted: {results.date}<br></br> 
-  Validation status: {results.status}<br></br>
-  Dictionary: {results.dictionaryName} (Version: {results.dictionaryVersion})<br></br>
-  </div>
-              {resultTable}
-  </div>;
-document.getElementById("response").innerHTML = ReactDOMServer.renderToString(formTable);
-};
 
 export default validatorPage;
