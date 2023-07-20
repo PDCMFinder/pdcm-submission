@@ -125,7 +125,6 @@ function DictionaryPage() {
   const [isDiffShowing, setIsDiffShowing] = useState(false);
 
   const [activeSchemas, setActiveSchemas] = useState<Schema[]>(preloadedDictionary.data.schemas);
-  console.log(activeSchemas);
   // Check if current schema is the latest version
   const isLatestSchema = getLatestVersion() === version ? true : false;
 

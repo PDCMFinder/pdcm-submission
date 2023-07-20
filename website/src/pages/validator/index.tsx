@@ -139,14 +139,15 @@ function validatorPage() {
   // Menu Contents
   const menuContents = generateMenuContents(filteredResult);
   //const menuContents = ""//require('./data.json');
-  //console.log(activeSchemas);
+  //console.log(filteredResult);
+  //console.log(menuContents);
   return (
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
-      <Layout permalink="validator" title="CancerModels.org - Data validator">
-      <InfoBar>
+      <Layout permalink="validator">
       <StyleWrapper>
           <div className={styles.mainContainer}>
+            <div className={styles.dict}>
               <div className={styles.heading}>
                 <Typography
                   color="#151c3d"
@@ -162,21 +163,21 @@ function validatorPage() {
                 </Typography>
                 <div id='file-upload'>
                   <form id='upload-form' method="POST" encType="multipart/form-data"> 
-                    <label htmlFor="file">File: </label>
+                    <label htmlFor="file">File: 
+                    
                     <input id="file" name="file" type="file" onChange={handleChange}/> 
-                    <input type="submit" value="Upload"/>
-                  </form>
+                    </label>
+                    <OldButton size="sm" onClick={()=> handleSubmit}>
+                    Validate submission
+                    </OldButton>
+                    </form>
+                </div>
+                
               </div>
-              </div>
-              <div id="dictionary-details"></div>            
-          </div>
-      </StyleWrapper>
-      </InfoBar> 
-      <div>
-            <div id="response">
-             <table id='validation'></table> 
-            </div>
-            <div> 
+              <InfoBar>
+                
+                </InfoBar>
+              <div id='validator'> 
             <Display visible={selectedTab === TAB_STATE.DETAILS}>
                 <div
                   css={css`
@@ -190,8 +191,11 @@ function validatorPage() {
                   />
                 </div>
               </Display>  
-            </div>  
-      </div>
+            </div>        
+            </div>
+                       
+          </div>
+      </StyleWrapper>
     </Layout>
     </EmotionThemeProvider>
   );

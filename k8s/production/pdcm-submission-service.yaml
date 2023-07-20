@@ -12,7 +12,7 @@ spec:
     - protocol: TCP
       port: 3000  # Port to expose on the Service
       targetPort: 3000  # Port your Docusaurus app is listening on inside the container
-      nodePort: 30081
+      nodePort: 31319
   type: NodePort
 status:
   loadBalancer: {}  # Expose the Service using a LoadBalancer (for public access)

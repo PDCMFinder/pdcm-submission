@@ -11,21 +11,25 @@ export interface validationResults {
   status: string;
   dictionaryVersion: string;
   dictionaryName: string;
-  sheetsValidationResults: resultSchema[];
+  sheetsValidationResults: Array<resultSchema>;
 }
 export interface resultSchema{
   sheetName: string;
-  schema: string;
   status: string;
-  valid: string;
-  result: schemaResult[]
+  result: Array<schemaResult>
 }
 
 export interface schemaResult{
   errorType: string;
   fieldName: string;
-  index: BigInteger;
+  info: Array<InfoSchema>;
   message: string;
+}
+
+export interface InfoSchema{
+  examples: string;
+  regex: string;
+  value: Array<string>; 
 }
 
 export interface Schema {

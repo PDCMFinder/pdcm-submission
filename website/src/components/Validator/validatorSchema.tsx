@@ -68,7 +68,7 @@ const FieldsTag = ({ fieldCount }) => (
   <DefaultTag
     className={`${styles.tag} ${styles.fields}`}
     style={{ marginTop: '3px' }}
-  >{`${fieldCount} Field${fieldCount > 1 ? 's' : ''}`}</DefaultTag>
+  >{`${fieldCount} invalid row${fieldCount > 1 ? 's' : ''}`}</DefaultTag>
 );
 
 
@@ -137,29 +137,15 @@ const SchemaView = ({
    * need to pass in state for Cell rendering
    * react-table rerenders everything
    */
-  const initialExpandingFields = useMemo(
-    () =>
-      schema.result.reduce((acc, val) => {
-        acc[val.fieldName] = false;
-        return acc;
-      }, {}),
-    [schema],
-  );
 
-
-  const [currentShowingScript, setCurrentShowingScripts] = React.useState<{
-    diff?: { left: string[]; right: string[] };
-    content?: string[];
-    fieldName: string;
-  }>(null);
 
   const cols = [
     {
       Header: 'Index',
       id: 'index',
       Cell: ({ original }) => {
-        const name = original;
-        
+        const name = original.index;
+        //console.log(original);
         return (
           <div
             css={css`
@@ -182,7 +168,7 @@ const SchemaView = ({
       Header: 'Field name',
       id: 'fieldName',
       Cell: ({ original }) => {
-        const name = original;
+        const name = original.fieldName;
         
         return (
           <div
@@ -203,44 +189,57 @@ const SchemaView = ({
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
     {
-      Header: 'Error type',
-      id: 'errorType',
+      Header: 'Value',
+      id: 'value',
       Cell: ({ original }) => {
-        const name = original;
-        
-        return (
-          <div
-            css={css`
-              font-size: 12px;
-            `}
-          >
-            <div
-              css={css`
-                font-weight: 600;
-              `}
-            >
-              {name}
-            </div>
-          </div>
-        );
-      },
-      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
-    },
-    {
-      Header: 'Info',
-      id: 'info',
-      Cell: ({ original }) => {
-        const info = original;
+        const info = original.info;
 
-        const infoMessage = info.regex;
+        const infoMessage = info.value;
         return (
           <TagContainer>
             {infoMessage}
           </TagContainer>
         );
       },
-      style: { padding: '8px' },
-      width: 102,
+      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px'},
+    },
+    {
+      Header: 'Error type',
+      id: 'errorType',
+      Cell: ({ original }) => {
+        const name = original.errorType;
+        
+        return (
+          <div
+            css={css`
+              font-size: 12px;
+            `}
+          >
+            <div
+              css={css`
+                font-weight: 600;
+              `}
+            >
+              {name}
+            </div>
+          </div>
+        );
+      },
+      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
+    },
+    {
+      Header: 'Error message',
+      id: 'errorMessage',
+      Cell: ({ original }) => {
+        const infoMessage = original.message;
+        
+        return (
+          <TagContainer>
+            {infoMessage}
+          </TagContainer>
+        );
+      },
+      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     }
   ].filter((col) => (isDataInvalid=='invalid' ? true : col.id !== 'compare'));
 
@@ -249,58 +248,20 @@ const SchemaView = ({
   const theme: Theme = useTheme();
   const rowColors = theme.diffColors.schemaField;
 
-  const highlightRowDiff = (changeType) => ({
-    style: {
-      background: rowColors[changeType],
-      textDecoration: changeType === ChangeType.DELETED ? 'line-through' : null,
-    },
-  });
-
   const tableData = getTableData(schema.status, schema.result);
-  console.log(tableData);
+  //console.log(tableData);
+  if(schema.status=="valid"){
+    return <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
+    <SchemaMeta schema={schema} fieldCount={schema.result.length} status={schema.status} />
+    Metadata is valid!
+    </div>
+  }
   return (
     <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
-      {currentShowingScript && (
-        <ModalPortal>
-          <Modal
-            css={css`
-              min-width: 600px;
-            `}
-            title={
-              <Typography variant="subtitle">
-                Field Script Restriction for:{' '}
-                <span style={{ fontWeight: 600 }}>{currentShowingScript.fieldName}</span>
-              </Typography>
-            }
-            onCloseClick={() => {
-              setCurrentShowingScripts(null);
-            }}
-            onCancelClick={() => {
-              setCurrentShowingScripts(null);
-            }}
-            actionVisible={false}
-            buttonSize="sm"
-          >
-            {currentShowingScript.diff ? (
-              <CompareCodeBlock
-                left={currentShowingScript.diff.left}
-                right={currentShowingScript.diff.right}
-              />
-            ) : (
-              <CodeBlock codes={currentShowingScript.content} />
-            )}
-          </Modal>
-        </ModalPortal>
-      )}
-
     <SchemaMeta schema={schema} fieldCount={schema.result.length} status={schema.status} />
 
       <div ref={containerRef}>
         <Table
-          getTrProps={(state, rowInfo) => {
-            const status = rowInfo.original.status;
-            return status;
-          }}
           withRowBorder
           parentRef={containerRef}
           columns={cols}
