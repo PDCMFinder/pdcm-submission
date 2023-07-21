@@ -278,7 +278,7 @@ function Navbar(): JSX.Element {
               <IconMenu />
             </button>
           )}
-          <Link className="navbar__brand" to={'/'}>
+          <Link className="navbar__brand" to={'https://www.cancermodels.org/'}target={"_self"} >
             {logoUrl != null && (
               <RespImage
                 sources={[

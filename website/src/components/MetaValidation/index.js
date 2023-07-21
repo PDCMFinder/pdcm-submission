@@ -18,43 +18,15 @@
  *
  */
 
-.mainContainer {
-  padding: 40px 0;
-  margin: 0 auto;
-}
+import React from 'react';
+import Typography from '@icgc-argo/uikit/Typography';
 
-.dict {
-  margin: 0 30px;
-}
+const MetaValidation = ({ date, status, dictionaryName, dictionaryVersion }) => (
+  <Typography variant="data" color="#151c3d">
+    {`Time of submission: ${date}`}<br></br> 
+    {`Dictionary used for validation: ${dictionaryName}: ${dictionaryVersion}`}<br></br> 
+    {`Validation status: ${status}`}
+  </Typography>
+);
 
-.menu {
-  width: 190px;
-  margin: 0 15px 0 20px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 97px;
-  align-self: flex-start;
-}
-
-.heading {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 30px;
-}
-
-.submission {
-  display: inline-flex;
-}
-/* Modal cont */
-.modalCont {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999; /* docusaurus theme header has an index of 200 */
-}
-
-input[type='file'] {
-  flex: 1;
-  display:none;
-}
-
+export default MetaValidation;
