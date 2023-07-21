@@ -17,7 +17,7 @@ const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted }) =>
         ); 
     })
   ) : (
-    <div>No file submitted for validation</div>
+    <div></div>
   );
 
 export default Validator;

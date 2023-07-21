@@ -122,6 +122,9 @@ function validatorPage() {
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
+  const [LoadingData, setLoadingData] = useState(true);
+  const defaultLoadingMessage = "No file submitted for validation";
+  const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
   const fileInputRef= React.useRef(null);
 
   const generateMenuContents = (activeSchemas) => {
@@ -155,7 +158,10 @@ function validatorPage() {
       const formData = new FormData();
       event.preventDefault();
       formData.append("file", inputFile);
-      
+      setLoadingData(true);
+      if(LoadingData){
+        setLoadingMessage("Validating your file ... ")
+      }
       const results = await fetch("http://localhost:3010/validation/upload-excel", {
         method: "POST",
         headers: new Headers(),
@@ -166,7 +172,12 @@ function validatorPage() {
       if(results.hasOwnProperty("status")){
         setFileSubmitted("yes");
         setActiveResult(results);
+        setLoadingData(false);
+        setLoadingMessage("")
       }
+    }else{
+      setLoadingData(false);
+      setLoadingMessage(defaultLoadingMessage);
     }
   };
   // Menu Contents
@@ -204,6 +215,7 @@ function validatorPage() {
                         setUploadButtonText("Upload files for validation");
                         setFileSubmitted("no");
                         setActiveResult(data);
+                        setLoadingMessage(defaultLoadingMessage);
                         document.getElementById('file').value = null;
                         //fileInputRef.current.files[0] = null;
                         }}>
@@ -220,7 +232,10 @@ function validatorPage() {
               <Row>
                 <MetaValidation date={date} status={isDataInvalid} dictionaryName={dictionaryName} dictionaryVersion={dictionaryVersion}></MetaValidation>
               </Row>
-              </Display> 
+              </Display>
+              <div id="Loading_message" css={css`
+                    margin-top: 30px;
+                  `}>{Loading_message}</div> 
             <Display visible={selectedTab === TAB_STATE.DETAILS}>
                 <div
                   css={css`
