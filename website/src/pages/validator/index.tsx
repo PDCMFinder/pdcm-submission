@@ -103,7 +103,7 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
-
+const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel"
 
 function validatorPage() {
   // docusaurus context
@@ -162,7 +162,7 @@ function validatorPage() {
       if(LoadingData){
         setLoadingMessage("Validating your file ... ")
       }
-      const results = await fetch("http://localhost:3010/validation/upload-excel", {
+      const results = await fetch(PDCMLVPath, {
         method: "POST",
         headers: new Headers(),
         body: formData,
