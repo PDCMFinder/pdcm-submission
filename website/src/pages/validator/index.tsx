@@ -103,7 +103,7 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
-const activeResult = {result: data.sheetsValidationResults, status: data.status};//[activeSchemas, true, ""];
+
 
 function validatorPage() {
   // docusaurus context
@@ -115,14 +115,14 @@ function validatorPage() {
   } = context;
   const [selectedTab, setSelectedTab] = useState(TAB_STATE.DETAILS);
   let [fileSubmitted, setFileSubmitted] = useState<string>("no");
-    
-  const [filteredResult, setFilteredResult] = useState(activeResult.result);
-  const [isDataInvalid, setisDataInvalid] = useState(activeResult.status);
-  const [date, setDate] = useState(data.date);
-  const [dictionaryName, setDictionaryName] = useState(data.dictionaryName);
-  const [dictionaryVersion, setDictionaryVersion] = useState(data.dictionaryVersion);
+  const [activeResult, setActiveResult] = useState(data);//[activeSchemas, true, ""];  
+  const filteredResult = activeResult.sheetsValidationResults;
+  const isDataInvalid = activeResult.status;
+  const date = activeResult.date;
+  const dictionaryName = activeResult.dictionaryName;
+  const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
-  const fileInputRef = React.useRef(null);
+  const fileInputRef= React.useRef(null);
 
   const generateMenuContents = (activeSchemas) => {
     const activeSchemaNames = activeSchemas.map((s) => s.sheetName);
@@ -135,17 +135,13 @@ function validatorPage() {
     }));
   };
   const handleButtonClick = () => {
-    console.log(fileInputRef.current);
     fileInputRef.current.click();
   };
 
   // Handle upload file:
   const handleChange = (event) => {
-    //const form = document.getElementById("upload-form");
     event.preventDefault();
     if(fileInputRef.current.files[0] !== undefined){
-      //form.addEventListener("submit", handleSubmit);
-      //console.log(fileInputRef.current.files[0]);
       setUploadButtonText(String(fileInputRef.current.files[0].name));
     }
   }
@@ -154,10 +150,7 @@ function validatorPage() {
   //Handle submit data:
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //console.log(event);
     if(event.target[0] !== null && fileInputRef.current.files[0] !== undefined){
-      console.log(fileInputRef.current.files);
-      const form = document.getElementById("upload-form");
       const inputFile = fileInputRef.current.files[0];
       const formData = new FormData();
       event.preventDefault();
@@ -172,12 +165,7 @@ function validatorPage() {
       //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
       if(results.hasOwnProperty("status")){
         setFileSubmitted("yes");
-        setFilteredResult(results.sheetsValidationResults);
-        setisDataInvalid(results.status); 
-        setDate(results.date);
-        //const dictionaryNameVersion = results.dictionaryName +": "+results.dictionaryVersion;
-        setDictionaryName(results.dictionaryName);
-        setDictionaryVersion(results.dictionaryVersion);
+        setActiveResult(results);
       }
     }
   };
@@ -205,19 +193,22 @@ function validatorPage() {
                   Data validator
                 </Typography>
                 <div id='file-upload' className={styles.submission}>
-                  <form id='upload-form' encType="multipart/form-data" onSubmit={handleSubmit}> 
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div>
-                        <OldButton variant="secondary" size="sm" onClick={handleButtonClick}>
+                        <Button variant="secondary" size="sm" onClick={handleButtonClick}>
                           <input id="file" name="file" type="file" ref={fileInputRef} onChange={handleChange}/><UploadButtonContent>{uploadButtonText}</UploadButtonContent>
-                      </OldButton>
+                      </Button>
                       </div>
-                      <div><OldButton size="sm" onClick={()=> handleSubmit}>Validate submission</OldButton></div>
-                      <div><Button variant="secondary" size="sm" onClick={() => {setFileSubmitted("no");}}>
-                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR
-                      </Button></div>
-                    </div>      
-                    </form>
+                      <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
+                      <div><Button variant="secondary" size="sm" onClick={() => {
+                        setUploadButtonText(uploadButtonText);
+                        setFileSubmitted("no");
+                        setActiveResult(data);
+                        //fileInputRef.current.files[0] = null;
+                        }}>
+                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
+                      </div>
+                    </div> 
                 </div>
               </div>
               <InfoBar>
