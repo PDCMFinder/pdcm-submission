@@ -200,14 +200,7 @@ function validatorPage() {
                       </Button>
                       </div>
                       <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
-                      <div><Button variant="secondary" size="sm" onClick={() => {
-                        setUploadButtonText(uploadButtonText);
-                        setFileSubmitted("no");
-                        setActiveResult(data);
-                        //fileInputRef.current.files[0] = null;
-                        }}>
-                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
-                      </div>
+                      
                     </div> 
                 </div>
               </div>
