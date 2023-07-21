@@ -44,7 +44,7 @@ import TreeView from '../../components/TreeView';
 import startCase from 'lodash/startCase';
 import Modal from '@icgc-argo/uikit/Modal';
 import SchemaMenu from '../../components/ContentMenu';
-import { Display, DownloadTooltip, DownloadButtonContent } from '../../components/common';
+import { Display, DownloadTooltip, DownloadButtonContent, UploadButtonContent } from '../../components/common';
 import { getLatestVersion } from '../../utils';
 import Tabs, { Tab } from '@icgc-argo/uikit/Tabs';
 import { StyledTab, TAB_STATE } from '../../components/Tabs';
@@ -72,8 +72,6 @@ const InfoBar = styled('div')`
   border-bottom: 2px solid #dcdde1;
   padding-bottom: 8px;
 `;
-
-
 
 export const useModalState = () => {
   const [visibility, setVisibility] = useState(false);
@@ -123,6 +121,9 @@ function validatorPage() {
   const [date, setDate] = useState(data.date);
   const [dictionaryName, setDictionaryName] = useState(data.dictionaryName);
   const [dictionaryVersion, setDictionaryVersion] = useState(data.dictionaryVersion);
+  const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
+  const fileInputRef = React.useRef(null);
+
   const generateMenuContents = (activeSchemas) => {
     const activeSchemaNames = activeSchemas.map((s) => s.sheetName);
     return activeSchemas.map((schema) => ({
@@ -133,19 +134,31 @@ function validatorPage() {
       disabled: !activeSchemaNames.includes(schema.name),
     }));
   };
+  const handleButtonClick = () => {
+    console.log(fileInputRef.current);
+    fileInputRef.current.click();
+  };
+
   // Handle upload file:
   const handleChange = (event) => {
-    const form = document.getElementById("upload-form");
+    //const form = document.getElementById("upload-form");
     event.preventDefault();
-    form.addEventListener("submit", handleSubmit);
+    if(fileInputRef.current.files[0] !== undefined){
+      //form.addEventListener("submit", handleSubmit);
+      //console.log(fileInputRef.current.files[0]);
+      setUploadButtonText(String(fileInputRef.current.files[0].name));
+    }
   }
+
 
   //Handle submit data:
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(event.target[0].files.length > 0){
+    //console.log(event);
+    if(event.target[0] !== null && fileInputRef.current.files[0] !== undefined){
+      console.log(fileInputRef.current.files);
       const form = document.getElementById("upload-form");
-      const inputFile = event.target[0].files[0]
+      const inputFile = fileInputRef.current.files[0];
       const formData = new FormData();
       event.preventDefault();
       formData.append("file", inputFile);
@@ -166,14 +179,6 @@ function validatorPage() {
         setDictionaryName(results.dictionaryName);
         setDictionaryVersion(results.dictionaryVersion);
       }
-      const formTable = <div id="repsonse">
-      <div className={styles.heading}>
-      Date submitted: {results.date}<br></br> 
-      Validation status: {results.status}<br></br>
-      Dictionary: {results.dictionaryName} (Version: {results.dictionaryVersion})<br></br>
-      </div>
-                  {}
-      </div>;
     }
   };
   // Menu Contents
@@ -199,18 +204,21 @@ function validatorPage() {
                 >
                   Data validator
                 </Typography>
-                <div id='file-upload'>
+                <div id='file-upload' className={styles.submission}>
                   <form id='upload-form' encType="multipart/form-data" onSubmit={handleSubmit}> 
-                    <label htmlFor="file">File: 
-                    
-                    <input id="file" name="file" type="file" onChange={handleChange}/> 
-                    </label>
-                    <OldButton size="sm" onClick={()=> handleSubmit}>
-                    Validate submission
-                    </OldButton>
+                    <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <div>
+                        <OldButton variant="secondary" size="sm" onClick={handleButtonClick}>
+                          <input id="file" name="file" type="file" ref={fileInputRef} onChange={handleChange}/><UploadButtonContent>{uploadButtonText}</UploadButtonContent>
+                      </OldButton>
+                      </div>
+                      <div><OldButton size="sm" onClick={()=> handleSubmit}>Validate submission</OldButton></div>
+                      <div><Button variant="secondary" size="sm" onClick={() => {setFileSubmitted("no");}}>
+                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR
+                      </Button></div>
+                    </div>      
                     </form>
                 </div>
-                
               </div>
               <InfoBar>
                 

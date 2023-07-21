@@ -36,6 +36,30 @@ export const DownloadIcon = ({ disabled }) => (
   />
 );
 
+export const UploadIcon = ({ disabled }) => (
+  <Icon
+    name="download"
+    fill={disabled ? 'white' : 'accent2_dark'}
+    height="12px"
+    style={{
+      marginRight: '5px',
+    }}
+  />
+);
+
+export const UploadButtonContent = ({
+  children,
+  disabled,
+}: {
+  children: React.ReactNode;
+  disabled?: boolean;
+}) => (
+  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+    <UploadIcon disabled={disabled} /> 
+    {children}
+  </div>
+);
+
 export const DownloadButtonContent = ({
   children,
   disabled,
