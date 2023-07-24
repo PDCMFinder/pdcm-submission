@@ -34,7 +34,7 @@ This is an example file. [example-clean.xlsx](../../website/static/assets/valida
 1. Once your file is formatted, head to the [validator](/validator) page for your data validation.
 2. Click on **Upload data for validation** and select the your EXCEL file, and click on **Validate submission**.
 
-### Step 3: Genrating the validatoion report and fixing the errors
+### Step 3: Generating the validation report and fixing the errors
 
 1. **Validator** will generate a validation report with error, if any, which can be resolved with help of the error messages generated and by refering to the [Data dictionay.](/dictionary)
 

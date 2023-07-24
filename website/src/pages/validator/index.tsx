@@ -103,7 +103,9 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
-const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002"
+const defaultLoadingMessage = "No file submitted for validation";
+
+const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
 
 function validatorPage() {
   // docusaurus context
@@ -122,7 +124,6 @@ function validatorPage() {
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
-  const defaultLoadingMessage = "No file submitted for validation";
   const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
   const fileInputRef= React.useRef(null);
 
