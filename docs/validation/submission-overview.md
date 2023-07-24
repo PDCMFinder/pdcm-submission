@@ -8,9 +8,9 @@ CancerModels.org is an open, catalogue for patient derived cancer models.
 
 ## Submit your PDCM data to CancerModels.Org to increase their visibility
 
-To support the gathering of high-quality data, a metadata dictionary defines the data model used at CancerModels.org it also provides details about some data validations performed at the time of submission. Metadata is cateogrised in six modules, which will be submitted as sheets in an EXCEL file.
+To support the gathering of high-quality data, a metadata dictionary defines the data model used at CancerModels.org it also provides details about some data validations performed at the time of submission. Metadata is categorised in six modules, which will be submitted as sheets in an EXCEL file.
 
-Explore the details of the **[CancerModels.org data dictioanry](/dictionary).**
+Explore the details of the **[CancerModels.org data dictionary](/dictionary).**
 
 ## How to submit models to CancerModels.org
 
