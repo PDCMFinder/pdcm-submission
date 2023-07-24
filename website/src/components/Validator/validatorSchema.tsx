@@ -141,11 +141,11 @@ const SchemaView = ({
 
   const cols = [
     {
-      Header: 'Index',
-      id: 'index',
+      Header: 'Field name',
+      id: 'fieldName',
       Cell: ({ original }) => {
-        const name = original.index;
-        //console.log(original);
+        const name = original.fieldName;
+        
         return (
           <div
             css={css`
@@ -165,11 +165,11 @@ const SchemaView = ({
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
     {
-      Header: 'Field name',
-      id: 'fieldName',
+      Header: 'Index',
+      id: 'index',
       Cell: ({ original }) => {
-        const name = original.fieldName;
-        
+        const name = original.index;
+        //console.log(original);
         return (
           <div
             css={css`

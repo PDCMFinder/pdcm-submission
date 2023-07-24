@@ -103,7 +103,7 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
-const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel"
+const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002"
 
 function validatorPage() {
   // docusaurus context
@@ -122,7 +122,6 @@ function validatorPage() {
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
-  const [LoadingData, setLoadingData] = useState(true);
   const defaultLoadingMessage = "No file submitted for validation";
   const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
   const fileInputRef= React.useRef(null);
@@ -154,14 +153,15 @@ function validatorPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(event.target[0] !== null && fileInputRef.current.files[0] !== undefined){
+      setFileSubmitted("no");
+      
       const inputFile = fileInputRef.current.files[0];
       const formData = new FormData();
       event.preventDefault();
       formData.append("file", inputFile);
-      setLoadingData(true);
-      if(LoadingData){
-        setLoadingMessage("Validating your file ... ")
-      }
+      
+      setLoadingMessage("Validating your file ... ")
+      
       const results = await fetch(PDCMLVPath, {
         method: "POST",
         headers: new Headers(),
@@ -172,11 +172,9 @@ function validatorPage() {
       if(results.hasOwnProperty("status")){
         setFileSubmitted("yes");
         setActiveResult(results);
-        setLoadingData(false);
         setLoadingMessage("")
       }
     }else{
-      setLoadingData(false);
       setLoadingMessage(defaultLoadingMessage);
     }
   };
@@ -202,7 +200,11 @@ function validatorPage() {
                   as="h1"
                 >
                   Data validator
+                  <Typography variant="paragraph" color="#000">
+                  Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help.
                 </Typography>
+                </Typography>
+
                 <div id='file-upload' className={styles.submission}>
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div>
@@ -211,6 +213,8 @@ function validatorPage() {
                       </Button>
                       </div>
                       <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
+                      <Display visible={true}>
+
                       <div><Button variant="secondary" size="sm" onClick={() => {
                         setUploadButtonText("Upload files for validation");
                         setFileSubmitted("no");
@@ -221,6 +225,7 @@ function validatorPage() {
                         }}>
                         <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
                       </div>
+                      </Display>
                     </div> 
                 </div>
               </div>
