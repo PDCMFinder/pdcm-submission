@@ -103,8 +103,8 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
+//const PDCMLVPath = "http://localhost:3010/validation/upload-excel" // For local runs
 const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel"
-
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
