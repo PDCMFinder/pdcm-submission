@@ -200,7 +200,11 @@ function validatorPage() {
                   as="h1"
                 >
                   Data validator
+                  <Typography variant="paragraph" color="#000">
+                  Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help.
                 </Typography>
+                </Typography>
+
                 <div id='file-upload' className={styles.submission}>
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div>
@@ -209,6 +213,8 @@ function validatorPage() {
                       </Button>
                       </div>
                       <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
+                      <Display visible={true}>
+
                       <div><Button variant="secondary" size="sm" onClick={() => {
                         setUploadButtonText("Upload files for validation");
                         setFileSubmitted("no");
@@ -219,6 +225,7 @@ function validatorPage() {
                         }}>
                         <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
                       </div>
+                      </Display>
                     </div> 
                 </div>
               </div>

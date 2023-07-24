@@ -19,6 +19,7 @@ Our data submission process happens in 4 major steps:
 1. ### Filling the templates: 
 
     You can find our metadeta template on the [Data Dictionary](/dictionary) page. The metadata template is divided into 6 modules describing the minimal information about the model. 
+    
 2. ### Data validation:
 
     After filling the templates you can validate your model metadata using our validation service, which can be found [here](/validator). To understand the errors you will have to understand our data model by exploring the [data dictionary](/dictionary).

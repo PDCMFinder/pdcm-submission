@@ -16,6 +16,7 @@ spec:
       containers:
         - name: pdcm-submission
           image: pdxfinder/pdcm-submission:develop
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000  # Port your Docusaurus app is listening on
           resources:
