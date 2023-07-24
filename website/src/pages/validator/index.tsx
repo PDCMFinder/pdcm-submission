@@ -103,7 +103,7 @@ export const ModalPortal = ({ children }) => {
     : null;
 };
 const data = require('./data.json')
-const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002/validation/upload-excel"
+const PDCMLVPath = "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:32002"
 
 function validatorPage() {
   // docusaurus context
@@ -122,7 +122,6 @@ function validatorPage() {
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
-  const [LoadingData, setLoadingData] = useState(true);
   const defaultLoadingMessage = "No file submitted for validation";
   const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
   const fileInputRef= React.useRef(null);
@@ -154,14 +153,15 @@ function validatorPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(event.target[0] !== null && fileInputRef.current.files[0] !== undefined){
+      setFileSubmitted("no");
+      
       const inputFile = fileInputRef.current.files[0];
       const formData = new FormData();
       event.preventDefault();
       formData.append("file", inputFile);
-      setLoadingData(true);
-      if(LoadingData){
-        setLoadingMessage("Validating your file ... ")
-      }
+      
+      setLoadingMessage("Validating your file ... ")
+      
       const results = await fetch(PDCMLVPath, {
         method: "POST",
         headers: new Headers(),
@@ -172,11 +172,9 @@ function validatorPage() {
       if(results.hasOwnProperty("status")){
         setFileSubmitted("yes");
         setActiveResult(results);
-        setLoadingData(false);
         setLoadingMessage("")
       }
     }else{
-      setLoadingData(false);
       setLoadingMessage(defaultLoadingMessage);
     }
   };
