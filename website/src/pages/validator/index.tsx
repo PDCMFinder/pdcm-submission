@@ -106,7 +106,6 @@ const data = require('./data.json')
 const defaultLoadingMessage = "No file submitted for validation";
 
 const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
-
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();

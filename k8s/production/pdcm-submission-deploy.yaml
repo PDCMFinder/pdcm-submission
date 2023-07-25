@@ -16,6 +16,7 @@ spec:
       containers:
         - name: pdcm-submission
           image: pdxfinder/pdcm-submission:main
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000  # Port your Docusaurus app is listening on
           resources:
@@ -25,3 +26,6 @@ spec:
             requests:
               cpu: "0.2"    # The guaranteed minimum CPU the container needs (e.g., 0.2 CPU core)
               memory: "256Mi"  # The guaranteed minimum memory the container needs (e.g., 256 megabytes)
+          envFrom:
+            - secretRef:
+                name: pdcm-submission-secret # Use the Secret for production

@@ -62,6 +62,7 @@ import styled from '@emotion/styled';
 import Dictionary from '../../components/Dictionary';
 import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
 import { ChangeType, Schema } from '../../../types';
+import { useLocation } from 'react-router-dom';
 
 const InfoBar = styled('div')`
   display: flex;
@@ -116,7 +117,6 @@ function DictionaryPage() {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
     },
   } = context;
-
   const [version, setVersion] = useState<string>(preloadedDictionary.version);
 
   // set diff version to 2nd version to compare to
@@ -142,12 +142,11 @@ function DictionaryPage() {
     }
     resolveSchemas();
   }, [version, diffVersion]);
-
   const [searchParams, setSearchParams] = useState(defaultSearchParams);
   const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
 
   const downloadTsvFileTemplate = (fileName) =>
-    window.location.assign(`static/assets/metadata_template.xlsx`);
+    window.location.assign(`/website/static/assets/metadata_template.xlsx`);
 
   // filter schemas
   const filteredSchemas = React.useMemo(
