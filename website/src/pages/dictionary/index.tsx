@@ -117,9 +117,6 @@ function DictionaryPage() {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
     },
   } = context;
-  console.log(useLocation());
-  console.log(PLATFORM_UI_ROOT);
-  console.log(GATEWAY_API_ROOT);
   const [version, setVersion] = useState<string>(preloadedDictionary.version);
 
   // set diff version to 2nd version to compare to
