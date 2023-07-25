@@ -111,7 +111,7 @@ export const createSchemasWithDiffs = (schemas, diffs): Schema[] => {
 
 async function fetchDictionary(version) {
   try {
-    const dict = await axios.get(`/data/schemas/${version}.json`);
+    const dict = await axios.get(`/static/data/schemas/${version}.json`);
 
     //const tree = await axios.get(`/data/schemas/${version}_tree.writeFile`);
     return { dict: dict.data, tree: null };
@@ -123,7 +123,7 @@ async function fetchDictionary(version) {
 async function fetchDiff(version, diffVersion) {
   try {
     const response = await axios.get(
-      `/data/schemas/diffs/${diffVersion}/${diffVersion}-diff-${version}.json`,
+      `/static/data/schemas/diffs/${diffVersion}/${diffVersion}-diff-${version}.json`,
     );
     return response.data;
   } catch (e) {

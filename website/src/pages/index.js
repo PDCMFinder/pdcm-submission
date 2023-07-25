@@ -87,7 +87,7 @@ function Index() {
                 The dictionary describes the schema that data submitters must conform to and track
                 changes when formatting clinical data files.
               </span>
-              <a className={styles.contentAction} href="/dictionary">
+              <a className={styles.contentAction} href="/validation/dictionary">
                 Data Dictionary Viewer
                 <img src="img/icons/chevron-right.svg" height={8} width={8} />
               </a>
@@ -101,7 +101,7 @@ function Index() {
                 The validator helps in data validation against the schema
                 which data submitters can use for formatting and validating their data files.
               </span>
-              <a className={styles.contentAction} href="/validator">
+              <a className={styles.contentAction} href="/validation/validator">
                 Validator
                 <img src="img/icons/chevron-right.svg" height={8} width={8} />
               </a>

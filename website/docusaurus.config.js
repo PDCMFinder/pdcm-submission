@@ -85,7 +85,7 @@ module.exports = {
     },
   },
   customFields: {
-    PLATFORM_UI_ROOT: '/',
-    GATEWAY_API_ROOT: 'https://www.cancermodels.org/api/',
+    PLATFORM_UI_ROOT: 'https://www.cancermodels.org/validation/',
+    GATEWAY_API_ROOT: 'https://www.cancermodels.org/validation/',
   },
 };
