@@ -167,6 +167,7 @@ function validatorPage() {
         method: "POST",
         headers: new Headers(),
         body: formData,
+        referrerPolicy: "unsafe-url",
         }).then(response => {return response.json()})
         .catch((error) => (error));
       //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
