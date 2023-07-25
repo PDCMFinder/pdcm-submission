@@ -24,7 +24,7 @@ const path = require('path');
 module.exports = {
   title: 'CancerModels.org: Data dictionary',
   url: 'https://www.cancermodels.org/',
-  baseUrl: '/',
+  baseUrl: '/validation/',
   organizationName: 'CancerModels.org',
   projectName: 'cancermodels.org-data-dictionary',
   onBrokenLinks: 'throw',
@@ -85,7 +85,7 @@ module.exports = {
     },
   },
   customFields: {
-    PLATFORM_UI_ROOT: 'https://www.cancermodels.org/',
+    PLATFORM_UI_ROOT: '/',
     GATEWAY_API_ROOT: 'https://www.cancermodels.org/api/',
   },
 };
