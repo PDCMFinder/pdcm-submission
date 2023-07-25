@@ -142,7 +142,7 @@ function DictionaryPage() {
     }
     resolveSchemas();
   }, [version, diffVersion]);
-
+  console.log(useLocation());
   const [searchParams, setSearchParams] = useState(defaultSearchParams);
   const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
 
