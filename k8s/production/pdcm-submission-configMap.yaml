@@ -1,8 +1,7 @@
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-  name: pdcm-submission-secret
+  name: pdcm-submission-configmap
   namespace: pdcm-validator
-type: Opaque
 data:
   REACT_APP_PDCM_LECTERN_VALIDATOR: "http://hh-rke-wp-webadmin-20-worker-1.caas.ebi.ac.uk:31683/validation/upload-excel"
