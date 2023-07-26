@@ -63,6 +63,8 @@ import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
 import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
 import { ChangeType, Schema, validationResults, resultSchema } from '../../../types';
+import Head from '@docusaurus/Head';
+
 
 const InfoBar = styled('div')`
   display: flex;
@@ -106,6 +108,7 @@ const data = require('./data.json')
 const defaultLoadingMessage = "No file submitted for validation";
 
 const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
+
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
@@ -166,6 +169,7 @@ function validatorPage() {
         method: "POST",
         headers: new Headers(),
         body: formData,
+        referrerPolicy: "unsafe-url",
         }).then(response => {return response.json()})
         .catch((error) => (error));
       //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
