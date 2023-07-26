@@ -29,7 +29,6 @@ module.exports = {
   projectName: 'cancermodels.org-submission',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
   favicon: 'favicon.ico',
   tagline: 'CancerModels.org: Submission',
 

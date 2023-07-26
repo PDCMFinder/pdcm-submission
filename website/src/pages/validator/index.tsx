@@ -189,7 +189,6 @@ function validatorPage() {
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
       <Layout permalink="validator">
-      <Head><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /></Head>
       <StyleWrapper>
           <div className={styles.mainContainer}>
             <div className={styles.dict}>
