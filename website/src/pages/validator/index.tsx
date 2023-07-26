@@ -63,6 +63,8 @@ import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
 import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
 import { ChangeType, Schema, validationResults, resultSchema } from '../../../types';
+import Head from '@docusaurus/Head';
+
 
 const InfoBar = styled('div')`
   display: flex;
@@ -187,6 +189,7 @@ function validatorPage() {
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
       <Layout permalink="validator">
+      <Head><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /></Head>
       <StyleWrapper>
           <div className={styles.mainContainer}>
             <div className={styles.dict}>

@@ -22,16 +22,16 @@ const path = require('path');
 
 
 module.exports = {
-  title: 'CancerModels.org: Data dictionary',
+  title: 'CancerModels.org: Submission',
   url: 'https://www.cancermodels.org/',
   baseUrl: '/validation/',
   organizationName: 'CancerModels.org',
-  projectName: 'cancermodels.org-data-dictionary',
+  projectName: 'cancermodels.org-submission',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   favicon: 'favicon.ico',
-  tagline: 'CancerModels.org: Data dictionary',
+  tagline: 'CancerModels.org: Submission',
 
   stylesheets: ['https://fonts.googleapis.com/css?family=Source+Code+Pro|Work+Sans&display=swap'],
 
