@@ -225,7 +225,7 @@ function DictionaryPage() {
                   which adheres to specific formats and restrictions to ensure a standard of data
                   quality. The following describes the attributes and permissible values for all of
                   the fields within the clinical tsv files for the{' '}
-                  <Link to="https://www.cancermodels.org/">CancerModels.org platform.</Link>
+                  <Link to="https://www.cancermodels.org/" target="_self">CancerModels.org platform.</Link>
                 </Typography>
               </div>
               <InfoBar>
