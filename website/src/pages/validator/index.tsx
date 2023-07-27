@@ -1,22 +1,19 @@
 /*
- * Copyright (c) 2020 The Ontario Institute for Cancer Research. All rights reserved
- *
- * This program and the accompanying materials are made available under the terms of the GNU Affero General Public License v3.0.
- * You should have received a copy of the GNU Affero General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
- * IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- *
- */
+* Copyright 2023 EMBL - European Bioinformatics Institute
+*
+* Licensed under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License. You may obtain a copy of the License at
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+* either express or implied. See the License for the specific
+* language governing permissions and limitations under the
+* License.
+*/
+
 
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
@@ -211,15 +208,15 @@ function validatorPage() {
 
                 <div id='file-upload' className={styles.submission}>
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <div>
+                      <div css={css`margin-right: 5px`}>
                         <Button variant="secondary" size="sm" onClick={handleButtonClick}>
                           <input id="file" name="file" type="file" ref={fileInputRef} onChange={handleChange}/><UploadButtonContent>{uploadButtonText}</UploadButtonContent>
                       </Button>
                       </div>
-                      <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
-                      <Display visible={true}>
+                      <div css={css`margin-right: 5px`}><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
 
-                      <div><Button variant="secondary" size="sm" onClick={() => {
+                      <div css={css`margin-right: 5px;`} >
+                        <Button variant="secondary" size="sm" onClick={() => {
                         setUploadButtonText("Upload files for validation");
                         setFileSubmitted("no");
                         setActiveResult(data);
@@ -227,9 +224,8 @@ function validatorPage() {
                         document.getElementById('file').value = null;
                         //fileInputRef.current.files[0] = null;
                         }}>
-                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
+                        <Icon name="times" height="8px" css={css`padding-right: 5px`}/>CLEAR</Button>
                       </div>
-                      </Display>
                     </div> 
                 </div>
               </div>

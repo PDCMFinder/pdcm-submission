@@ -44,6 +44,8 @@
 
 .submission {
   display: inline-flex;
+  flex-flow: row wrap;
+  padding: 2px;
 }
 /* Modal cont */
 .modalCont {
@@ -57,4 +59,3 @@ input[type='file'] {
   flex: 1;
   display:none;
 }
-
