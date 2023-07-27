@@ -132,5 +132,7 @@ deploy-HH-WP-WEBADMIN-dev:
       fi
     - kubectl rollout status -f k8s/development/pdcm-submission-deploy-dev.yaml -n pdcm-validator-dev
     - kubectl get pods,service,deploy,replicaset,ing -n pdcm-validator-dev
-
+  only:
+    refs:
+      - develop
 
