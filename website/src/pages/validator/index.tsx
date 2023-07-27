@@ -211,12 +211,12 @@ function validatorPage() {
 
                 <div id='file-upload' className={styles.submission}>
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <div>
+                      <div css={css`margin-right: 5px`}>
                         <Button variant="secondary" size="sm" onClick={handleButtonClick}>
                           <input id="file" name="file" type="file" ref={fileInputRef} onChange={handleChange}/><UploadButtonContent>{uploadButtonText}</UploadButtonContent>
                       </Button>
                       </div>
-                      <div><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
+                      <div css={css`margin-right: 5px`}><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
                       <Display visible={true}>
 
                       <div><Button variant="secondary" size="sm" onClick={() => {

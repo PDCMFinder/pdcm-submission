@@ -38,7 +38,7 @@ export const DownloadIcon = ({ disabled }) => (
 
 export const UploadIcon = ({ disabled }) => (
   <Icon
-    name="download"
+    name="upload"
     fill={disabled ? 'white' : 'accent2_dark'}
     height="12px"
     style={{
