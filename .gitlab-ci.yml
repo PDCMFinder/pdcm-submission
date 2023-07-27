@@ -124,13 +124,13 @@ deploy-HH-WP-WEBADMIN-dev:
     - kubectl version
 
     - |
-      if kubectl apply -f k8s/development/pdcm-submission-deploy-dev.yaml --record | grep -q unchanged; then
+      if kubectl apply -f k8s/development/pdcm-submission-deploy-dev.yaml -n pdcm-validator --record | grep -q unchanged; then
           echo "=> Patching deployment to force image update."
-          kubectl patch -f k8s/development/pdcm-submission-deploy-dev.yaml --record -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
+          kubectl patch -f k8s/development/pdcm-submission-deploy-dev.yaml -n pdcm-validator --record -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
       else
         echo "=> Deployment apply has changed the object, no need to force image update."
       fi
-    - kubectl rollout status -f k8s/development/pdcm-submission-deploy-dev.yaml
-    - kubectl get pods,service,deploy,replicaset,ing
+    - kubectl rollout status -f k8s/development/pdcm-submission-deploy-dev.yaml -n pdcm-validator
+    - kubectl get pods,service,deploy,replicaset,ing -n pdcm-validator
 
 
