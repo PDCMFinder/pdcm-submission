@@ -263,7 +263,7 @@ const SchemaView = ({
 
       <div ref={containerRef}>
         <Table
-          withRowBorder
+          withRowBorder={true}
           parentRef={containerRef}
           columns={cols}
           data={tableData}
@@ -272,8 +272,12 @@ const SchemaView = ({
           pageSize={itemsPerPage}
           sortable={true}
           cellAlignment="top"
-          withOutsideBorder
+          withOutsideBorder={true}
           highlight={false}
+          withResizeBlur={true}
+          resizable={true}
+          showPageSizeOptions={false}
+          withStripes={true}
         />
 
       </div>

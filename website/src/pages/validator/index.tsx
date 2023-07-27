@@ -214,9 +214,9 @@ function validatorPage() {
                       </Button>
                       </div>
                       <div css={css`margin-right: 5px`}><Button size="sm" onClick={handleSubmit}>Validate submission</Button></div>
-                      <Display visible={true}>
 
-                      <div><Button variant="secondary" size="sm" onClick={() => {
+                      <div css={css`margin-right: 5px;`} >
+                        <Button variant="secondary" size="sm" onClick={() => {
                         setUploadButtonText("Upload files for validation");
                         setFileSubmitted("no");
                         setActiveResult(data);
@@ -224,9 +224,8 @@ function validatorPage() {
                         document.getElementById('file').value = null;
                         //fileInputRef.current.files[0] = null;
                         }}>
-                        <Icon name="times" height="8px" css={css`padding-right: 5px;`}/>CLEAR</Button>
+                        <Icon name="times" height="8px" css={css`padding-right: 5px`}/>CLEAR</Button>
                       </div>
-                      </Display>
                     </div> 
                 </div>
               </div>
