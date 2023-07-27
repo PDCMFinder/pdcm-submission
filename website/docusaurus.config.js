@@ -24,7 +24,7 @@ const path = require('path');
 module.exports = {
   title: 'CancerModels.org: Submission',
   url: 'https://www.cancermodels.org/',
-  baseUrl: '/validation/',
+  baseUrl: '',
   organizationName: 'CancerModels.org',
   projectName: 'cancermodels.org-submission',
   onBrokenLinks: 'throw',
