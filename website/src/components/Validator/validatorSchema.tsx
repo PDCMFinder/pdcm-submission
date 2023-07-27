@@ -249,6 +249,10 @@ const SchemaView = ({
   const rowColors = theme.diffColors.schemaField;
 
   const tableData = getTableData(schema.status, schema.result);
+  // State variables for pagination
+  const itemsPerPage = 25; // Number of items to display per page
+
+
   //console.log(tableData);
   if(schema.status=="valid"){
     return <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
@@ -266,14 +270,15 @@ const SchemaView = ({
           parentRef={containerRef}
           columns={cols}
           data={tableData}
-          showPagination={false}
-          defaultPageSize={tableData.length}
-          pageSize={tableData.length}
+          showPagination={true}
+          defaultPageSize={itemsPerPage}
+          pageSize={itemsPerPage}
           sortable={true}
           cellAlignment="top"
           withOutsideBorder
           highlight={false}
         />
+
       </div>
     </div>
   );
