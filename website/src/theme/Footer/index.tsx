@@ -63,12 +63,7 @@ function Footer() {
             </a>
           </section>
           <section className={styles['legal-text']}>{copyright} </section>
-          <section className={styles['legal-text']}>
-            <a href="https://www.cancermodels.org/" target="_blank">
-              CancerModels.org
-            </a>{' '}
-            {/*1.0.0 - API v1 - 8e37309*/}
-          </section>
+          
         </div>
         <div className={styles.footerLogo}>
           <a href="https://www.ebi.ac.uk/">

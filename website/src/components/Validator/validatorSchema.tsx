@@ -63,7 +63,7 @@ const HeaderName = ({ name }) => {
 
 const FieldsTag = ({ fieldCount }) => (
   <DefaultTag
-    className={`${styles.tag} ${styles.fields}`}
+    className={`${styles.tag} ${styles.fields} ${fieldCount > 0 ? styles.invalid : styles.valid}`}
     style={{ marginTop: '3px' }}
   >{`${fieldCount} invalid row${fieldCount > 1 ? 's' : ''}`}</DefaultTag>
 );
