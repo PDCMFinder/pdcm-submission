@@ -130,7 +130,7 @@ deploy-HH-WP-WEBADMIN-dev:
       else
         echo "=> Deployment apply has changed the object, no need to force image update."
       fi
-    - kubectl rollout status -f k8s/development/pdcm-submission-deploy-dev.yaml -n pdcm-validator-dev
+    - kubectl rollout status -f k8s/development/pdcm-submission-deploy-dev.yaml
     - kubectl get pods,service,deploy,replicaset,ing -n pdcm-validator-dev
   only:
     refs:
