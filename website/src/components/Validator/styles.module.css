@@ -41,6 +41,14 @@
   background-color: #4f546d;
 }
 
+.tag.fields.invalid { 
+background-color:#f80233 ;
+}
+.tag.fields.valid{
+  background-color: rgb(2, 195, 50);
+}
+
+
 .fileExampleHighlight {
   font-weight: 600;
 }
