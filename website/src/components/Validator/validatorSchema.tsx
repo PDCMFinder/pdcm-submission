@@ -101,7 +101,16 @@ const SchemaMeta = ({ schema, fieldCount, status }: SchemaMetaProps) => {
   );
 };
 
-
+const errorTypeMessages = {
+  "MISSING_REQUIRED_FIELD": "Missing Required Field",
+  "INVALID_FIELD_VALUE_TYPE": "Invalid Value Type",
+  "INVALID_BY_REGEX": "Invalid Format",
+  "INVALID_BY_RANGE": "Value Not In Allowed Range",
+  "INVALID_BY_SCRIPT": "Invalid By Custom Validation Script",
+  "INVALID_ENUM_VALUE": "Value Error",
+  "UNRECOGNIZED_FIELD": "Unrecognized Field",
+  "INVALID_BY_UNIQUE": "Not unique values",
+}
 
 // TODO: dont like this, cells should render based on isDiffShowing
 const getTableData = (status, fields) =>
@@ -208,8 +217,9 @@ const SchemaView = ({
       id: 'errorType',
       width: 180,
       Cell: ({ original }) => {
-        const name = original.errorType;
-        
+        const errorType = original.errorType;
+
+        const name = errorTypeMessages[errorType];
         return (
           <div
             css={css`
