@@ -111,7 +111,19 @@ const errorTypeMessages = {
   "UNRECOGNIZED_FIELD": "Unrecognized Field",
   "INVALID_BY_UNIQUE": "Not unique values",
 }
-
+const regexTypes = {
+  "^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_\/\\-&]{0,250}$": "This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<>%:;_/-&).",
+  "^[\\w\\d\\s\\(\\)\\+.',<>%:;_\/\\-&]{0,1000}$": "This field accepts a detailed description string of up to 1000 characters, comprising letters, digits, spaces, parentheses, and specific symbols (+.',<>%:;_/-&).",
+  "^(http|https)://[a-zA-Z0-9-\\.]+\\.[a-zA-Z]{2,5}(/[a-zA-Z0-9-._~:/%?#[\\]@!$&'()*+,;=]*)?$": "This field accepts a URL starting with 'http://' or 'https://' followed by domain names and optional path components.",
+  "^[\\w\\d\\s/._~-]+$": "This field accepts a URL-safe string of characters, including letters, digits, spaces, slashes, periods, underscores, and hyphens.",
+  "^(([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+,?\\s?)*|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows an email address or multiple separated by comma (,), or the strings 'Not Provided' or 'Not Collected'.",
+  "^[\\w\\s\\W]{0,250}$": "This field allows a contact name or multiple separated by comma (,).",
+  "^(?:PMID:\\s?[0-9]{1,8},?\\s?)*$": "This field allows a PubMed ID (PMID) in the format 'PMID: [ID], ' with optional whitespace.",
+  "^([\\d\\s\\.,->?]+|(A|a)ll|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows numeric values, including integers, ranges, or special values like 'All', 'Not Provided', or 'Not Collected'",
+  "^([\\d\\s\\.,-]+(months)?|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows age values, in 'months' as well or 'Not Provided' or 'Not Collected'.",
+  "^((c|C)ollection\\sevent\\s[0-9]{1,3}||(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows string such as 'collection event ' followed by a numeric value eg. 'collection event 1', or 'Not Provided' or 'Not Collected'.",
+  "^([A-Za-z]{3}\\s[0-9]{4}|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows a collection date in the format 'MMM YYYY' (e.g., Jan 2023), or special values like 'Not Provided' or 'Not Collected'."
+}
 // TODO: dont like this, cells should render based on isDiffShowing
 const getTableData = (status, fields) =>
   status
@@ -218,7 +230,6 @@ const SchemaView = ({
       width: 180,
       Cell: ({ original }) => {
         const errorType = original.errorType;
-
         const name = errorTypeMessages[errorType];
         return (
           <div
@@ -242,7 +253,15 @@ const SchemaView = ({
       Header: 'Error message',
       id: 'errorMessage',
       Cell: ({ original }) => {
-        const infoMessage = original.message;
+        let infoMessage = original.message;
+        const regex = original.info.regex;
+        const example = original.info.examples;
+        const errorType = original.errorType;
+
+        if(errorType=="INVALID_BY_REGEX"){
+          const regexMessage = regexTypes[regex];
+          infoMessage = regexMessage + " Please check the value as it is not permissible for this field. Refer to the example: "+ example;
+        }
         
         return (
           <TagContainer>
