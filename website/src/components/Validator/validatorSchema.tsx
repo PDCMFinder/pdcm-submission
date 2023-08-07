@@ -262,6 +262,9 @@ const SchemaView = ({
           const regexMessage = regexTypes[regex];
           infoMessage = regexMessage + " Please check the value as it is not permissible for this field. Refer to the example: "+ example;
         }
+        if(errorType=="UNRECOGNIZED_FIELD"){
+          infoMessage = "This field is not part of the schema. Please check the field name in comparision to the dictionary.";
+        }
         
         return (
           <TagContainer>
