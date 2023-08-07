@@ -138,32 +138,9 @@ const SchemaView = ({
 
   const cols = [
     {
-      Header: 'Field name',
-      id: 'fieldName',
-      Cell: ({ original }) => {
-        const name = original.fieldName;
-        
-        return (
-          <div
-            css={css`
-              font-size: 12px;
-            `}
-          >
-            <div
-              css={css`
-                font-weight: 600;
-              `}
-            >
-              {name}
-            </div>
-          </div>
-        );
-      },
-      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
-    },
-    {
       Header: 'Index',
       id: 'index',
+      width: 50,
       Cell: ({ original }) => {
         const name = original.index;
         //console.log(original);
@@ -186,8 +163,34 @@ const SchemaView = ({
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },
     {
+      Header: 'Field name',
+      id: 'fieldName',
+      width: 200,
+      Cell: ({ original }) => {
+        const name = original.fieldName;
+        
+        return (
+          <div
+            css={css`
+              font-size: 12px;
+            `}
+          >
+            <div
+              css={css`
+                font-weight: 600;
+              `}
+            >
+              {name}
+            </div>
+          </div>
+        );
+      },
+      style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
+    },
+    {
       Header: 'Value',
       id: 'value',
+      width: 150,
       Cell: ({ original }) => {
         const info = original.info;
 
@@ -203,6 +206,7 @@ const SchemaView = ({
     {
       Header: 'Error type',
       id: 'errorType',
+      width: 180,
       Cell: ({ original }) => {
         const name = original.errorType;
         
@@ -247,9 +251,8 @@ const SchemaView = ({
 
   const tableData = getTableData(schema.status, schema.result);
   // State variables for pagination
-  const itemsPerPage = 25; // Number of items to display per page
-
-
+  const itemsPerPage = 10; // Number of items to display per page
+  
   //console.log(tableData);
   if(schema.status=="valid"){
     return <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
@@ -274,8 +277,8 @@ const SchemaView = ({
           cellAlignment="top"
           withOutsideBorder={true}
           highlight={false}
-          withResizeBlur={true}
-          resizable={true}
+          withResizeBlur={false}
+          resizable={false}
           showPageSizeOptions={false}
           withStripes={true}
         />

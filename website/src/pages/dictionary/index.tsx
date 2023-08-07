@@ -146,7 +146,7 @@ function DictionaryPage() {
   const [selectedTab, setSelectedTab] = React.useState(TAB_STATE.DETAILS);
 
   const downloadTsvFileTemplate = (fileName) =>
-    window.location.assign(`../../../static/assets/metadata_template.xlsx`);
+    window.location.assign(`data/metadata_template.xlsx`);
 
   // filter schemas
   const filteredSchemas = React.useMemo(
