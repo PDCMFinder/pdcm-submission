@@ -310,8 +310,8 @@ const SchemaView = ({
           cellAlignment="top"
           withOutsideBorder={true}
           highlight={false}
-          withResizeBlur={false}
-          resizable={false}
+          withResizeBlur={true}
+          resizable={true}
           showPageSizeOptions={false}
           withStripes={true}
         />
