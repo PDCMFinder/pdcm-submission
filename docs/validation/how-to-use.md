@@ -7,9 +7,9 @@ This guide will describe how to validate your model metadata using the [validato
 
 ## Example files
 
-This is an example file. [example-clean.xlsx](../../website/static/assets/validation_example-clean.xlsx).
+This is an example file. [example-clean.xlsx](/assets/validation_example-clean.xlsx).
 
-This is another example file. [example-error.xlsx](../../website/static/assets/validation_example-error.xlsx).
+This is another example file. [example-error.xlsx](/assets/validation_example-error.xlsx).
 
 
 ## How-to-use the validator
@@ -42,5 +42,5 @@ This is another example file. [example-error.xlsx](../../website/static/assets/v
 
 ### Step 4: Submitting your models to CancerModels.org
 
-1. After fixing the validation errors, if any, you are ready to submit your models to CancerModels.org. Please refer to [submission-overview](/docs/validation/submission-overview) for more info ...
+1. After fixing the validation errors, if any, you are ready to submit your models to CancerModels.org. Please refer to [submission-overview](/docs/submission/submission-overview) for more info ...
 
