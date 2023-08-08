@@ -1,1 +1,0 @@
-{"schemas":{"patient":{"updated":{"ethnicity_assessment_method":{"restrictions":{"regex":{"left":null,"right":"^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_/\\-&]{0,250}$"}}}},"created":{},"deleted":{}}}}
