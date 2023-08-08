@@ -156,24 +156,39 @@ function validatorPage() {
       setFileSubmitted("no");
       
       const inputFile = fileInputRef.current.files[0];
-      const formData = new FormData();
-      event.preventDefault();
-      formData.append("file", inputFile);
-      
-      setLoadingMessage("Validating your file ... ")
-      
-      const results = await fetch(PDCMLVPath, {
-        method: "POST",
-        headers: new Headers(),
-        body: formData,
-        referrerPolicy: "unsafe-url",
-        }).then(response => {return response.json()})
-        .catch((error) => (error));
-      //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
-      if(results.hasOwnProperty("status")){
-        setFileSubmitted("yes");
-        setActiveResult(results);
-        setLoadingMessage("")
+      const allowedFormats = ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
+      if(inputFile && allowedFormats.includes(inputFile.type)){
+        const formData = new FormData();
+        event.preventDefault();
+        formData.append("file", inputFile);
+        
+        setLoadingMessage("Validating your file ... ")
+        
+        const results = await fetch(PDCMLVPath, {
+          method: "POST",
+          headers: new Headers(),
+          body: formData,
+          referrerPolicy: "unsafe-url",
+          }).then(response => {
+            if (response.status === 200 || response.status ===201 || response.status === 202 || response.ok) {
+            // Successful response
+            return response.json();   
+          } else if (response.status === 400) {
+            // Bad Request
+            setLoadingMessage("Error processing file, please check the file and try again.")
+          } else if (response.status === 401) {
+            // Unauthorized
+            setLoadingMessage("Error submitting file, please try again later.");
+          }})
+          .catch((error) => {console.error('HTTP error:', error)});
+          if(results.hasOwnProperty("status")){
+            setFileSubmitted("yes");
+            setActiveResult(results);
+            setLoadingMessage("")
+          }
+        //document.getElementById("dictionary-details").innerHTML = JSON.stringify(results);//ReactDOMServer.renderToString(<div id='dictionary-details'>results</div>);
+      }else{
+        setLoadingMessage("Invalid file format. Please upload an excel file.")
       }
     }else{
       setLoadingMessage(defaultLoadingMessage);
