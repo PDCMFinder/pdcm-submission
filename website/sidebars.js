@@ -10,20 +10,20 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Submission',
-      collapsed: true,
-      items: [
-        'submission/submission-overview'
-      ],
-    },
-    {
-      type: 'category',
       label: 'Validator',
       collapsed: true,
       items: [
         'validation/how-to-use',
         'validation/error-report'
       ],
-    }
+    },
+    {
+      type: 'category',
+      label: 'Submission',
+      collapsed: true,
+      items: [
+        'submission/submission-overview'
+      ],
+    },
   ],
 };
