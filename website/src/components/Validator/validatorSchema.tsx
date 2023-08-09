@@ -162,7 +162,7 @@ const SchemaView = ({
     {
       Header: 'Field name',
       id: 'fieldName',
-      width: 200,
+      width: 220,
       Cell: ({ original }) => {
         const name = original.fieldName;
         
@@ -187,7 +187,7 @@ const SchemaView = ({
     {
       Header: 'Index',
       id: 'index',
-      width: 50,
+      width: 70,
       Cell: ({ original }) => {
         const name = original.index;
         //console.log(original);
@@ -212,10 +212,9 @@ const SchemaView = ({
     {
       Header: 'Value',
       id: 'value',
-      width: 150,
+      width: 220,
       Cell: ({ original }) => {
         const info = original.info;
-
         const infoMessage = info.value;
         return (
           <TagContainer>
@@ -228,7 +227,7 @@ const SchemaView = ({
     {
       Header: 'Error type',
       id: 'errorType',
-      width: 180,
+      width: 220,
       Cell: ({ original }) => {
         const errorType = original.errorType;
         const name = errorTypeMessages[errorType];
