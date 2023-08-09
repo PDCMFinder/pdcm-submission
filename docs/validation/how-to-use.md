@@ -1,6 +1,7 @@
 ---
-id: How-to-use
-title: How-to-use
+id: how-to-use
+title: How to use
+platform_key: DOCS_HOW_TO_USE
 ---
 This guide will describe how to validate your model metadata using the [validator.](/validator).
 
