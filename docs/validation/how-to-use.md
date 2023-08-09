@@ -39,7 +39,7 @@ This is another example file. [example-error.xlsx](/assets/validation_example-er
 
 ### Step 3: Generating the validation report and fixing the errors
 
-1. **Validator** will generate a validation report with error, if any, which can be resolved with help of the error messages generated and by refering to the [Data dictionay.](/dictionary)
+1. **Validator** will generate a validation report with error, if any, which can be resolved with help of the error messages generated and by refering to the [Validation report page](/docs/validation/error-report) and [Data dictionay.](/dictionary)
 
 ### Step 4: Submitting your models to CancerModels.org
 

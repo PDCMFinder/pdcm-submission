@@ -22,7 +22,7 @@ Our data submission process happens in 4 major steps:
     
 2. ### Data validation:
 
-    After filling the templates you can validate your model metadata using our validation service, which can be found [here](/validator). To understand the errors you will have to understand our data model by exploring the [data dictionary](/dictionary).
+    After filling the templates you can validate your model metadata using our validation service, which can be found [here](/validator). Here's a guide on [how to use the validator](/docs/validation/how-to-use) and to understand the errors you can refer to [validation report](/docs/validation/error-report) and our data model by exploring the [data dictionary](/dictionary).
 
 3. ### Data submission:
 
