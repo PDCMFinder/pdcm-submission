@@ -37,6 +37,9 @@ spec:
               value: '1.0'
             - name: DICTIONARY_NAME # Name of the dictionary to use for the validations
               value: CancerModels_Dictionary
+            - name: PORT
+              value: '3000'
+
 
 
           
