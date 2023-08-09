@@ -108,18 +108,6 @@ function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
   const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
-
-  const logAllEnvVariables = () => {
-    for (const envVar in process.env) {
-      if (process.env.hasOwnProperty(envVar)) {
-        console.log(`${envVar}: ${process.env[envVar]}`);
-      }
-    }
-  };
-  
-  // Call the function to log environment variables
-  logAllEnvVariables();
-
   const {
     siteConfig: {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
