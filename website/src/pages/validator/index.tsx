@@ -104,16 +104,22 @@ export const ModalPortal = ({ children }) => {
 const data = require('./data.json')
 const defaultLoadingMessage = "No file submitted for validation";
 
-const envVariables = Object.keys(process.env)
-    .filter(key => key.startsWith("REACT_APP_"))
-    .map(key => ({ name: key, value: process.env[key] }));
-
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
   const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
 
-  console.log(envVariables);
+  const logAllEnvVariables = () => {
+    for (const envVar in process.env) {
+      if (process.env.hasOwnProperty(envVar)) {
+        console.log(`${envVar}: ${process.env[envVar]}`);
+      }
+    }
+  };
+  
+  // Call the function to log environment variables
+  logAllEnvVariables();
+
   const {
     siteConfig: {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
