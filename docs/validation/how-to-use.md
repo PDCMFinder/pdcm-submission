@@ -24,7 +24,7 @@ This is another example file. [example-error.xlsx](/assets/validation_example-er
 
 #### Tips to format your metadata file
 
-- Open your model metada in Excel:
+- Open your model metadata in Excel:
   - BEFORE pasting your data into the Excel spreadsheet, reformat the cells as text. To do so, select the empty cells where you will paste your data, right click and select "Format cells". Choose the "Text" option and click "Ok".
   - The first four rows of the file are reserved for the field headers. DO NOT DELETE THESE, as the headers act as important keys for data validation.
   - Paste your data under the correct header fields.
