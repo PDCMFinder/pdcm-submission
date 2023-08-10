@@ -264,7 +264,7 @@ const SchemaView = ({
           infoMessage = regexMessage;
           return (
             <TagContainer>
-              {infoMessage} For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error-representation-1">Validation report</Link><br />Please check the value as it is not permissible for this field. <br /> <b>Example: {example}</b>
+              {infoMessage} For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error">Validation report</Link><br />Please check the value as it is not permissible for this field. <br /> <b>Example: {example}</b>
             </TagContainer>
           );
         }
