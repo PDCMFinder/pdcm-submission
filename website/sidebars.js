@@ -6,6 +6,7 @@ module.exports = {
       collapsed: true,
       items: [
         'dictionary/dictionary-overview',
+        'dictionary/permissible-values',
       ],
     },
     {
