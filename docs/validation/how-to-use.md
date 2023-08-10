@@ -37,7 +37,7 @@ Before we begin, let's take a look at some example files for context:
 
 ### Step 3: Generating the validation report and fixing the errors
 
-- The **validator** will generate a validation report highlighting errors, if any. Use the error messages and refer to the [Validation Report](/docs/validation/error-report) and [Data Dictionay](/dictionary)for guidance on resolving issues.
+- The **validator** will generate a validation report highlighting errors, if any. Use the error messages and refer to the [Validation Report](/docs/validation/error-report) and [Data Dictionay](/dictionary) for guidance on resolving issues.
 
 
 By following these steps, you ensure that your model metadata is correctly formatted and validated, increasing the accuracy and reliability of your submissions. If you have any questions, feel free to refer to the provided resources or [reach out to our team](https://www.cancermodels.org/contact).
