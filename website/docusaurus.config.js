@@ -19,7 +19,6 @@
  */
 
 const path = require('path');
-require('dotenv').config();
 
 module.exports = {
   title: 'CancerModels.org: Submission',
