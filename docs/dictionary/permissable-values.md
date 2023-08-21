@@ -35,7 +35,7 @@ platform_key: DOCS_Permissible_Values
 | stage            | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
 | staging_system   | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
 | grade            | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
-| grading_sytem    | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
+| grading_system    | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
 | virology_status  | This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<%>:;_/-&). |
 | sharable         | yes, no, Not provided, Not collected                |
 | treatment_naive_at_collection       | yes, no, Not provided, Not collected                |

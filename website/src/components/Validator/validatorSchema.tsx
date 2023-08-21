@@ -17,41 +17,20 @@
 
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import React, { useState, useMemo, useEffect, Fragment } from 'react';
+import React from 'react';
 import Table from '../Table';
-import Tag, { TagVariant, TAG_DISPLAY_NAME, TagContainer } from '../Tag';
+import { TagContainer } from '../Tag';
 import styles from './styles.module.css';
-import DefaultTag, { TAG_VARIANTS } from '@icgc-argo/uikit/Tag';
+import DefaultTag from '@icgc-argo/uikit/Tag';
 import startCase from 'lodash/startCase';
-import { DataTypography, SchemaTitle } from '../Typography';
-import { ModalPortal } from '../../pages/dictionary';
-import get from 'lodash/get';
-import { styled } from '@icgc-argo/uikit';
+import { SchemaTitle } from '../Typography';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Icon from '@icgc-argo/uikit/Icon';
 import { useTheme } from 'emotion-theming';
 import { Theme } from '../../styles/theme/cancermodels';
-import { Script } from '../Schema/TableComponents';
-import Modal from '../Modal';
-import Typography from '@icgc-argo/uikit/Typography';
-import CodeBlock, { CompareCodeBlock } from '../CodeBlock';
 import { css } from '@emotion/core';
-import union from 'lodash/union';
-import { ChangeType, resultSchema } from '../../../types';
-import Button from '../Button';
-import { compareText } from '../CompareLegend';
+import { resultSchema } from '../../../types';
 import { Link } from 'react-router-dom';
 
-const formatFieldType = (value) => {
-  switch (value) {
-    case null:
-      return '';
-    case 'string':
-      return 'TEXT';
-    default:
-      return value.toUpperCase();
-  }
-};
 
 const HeaderName = ({ name }) => {
   const sentenceCase = startCase(name);
@@ -102,29 +81,6 @@ const SchemaMeta = ({ schema, fieldCount, status }: SchemaMetaProps) => {
   );
 };
 
-const errorTypeMessages = {
-  "MISSING_REQUIRED_FIELD": "Missing Required Field",
-  "INVALID_FIELD_VALUE_TYPE": "Invalid Value Type",
-  "INVALID_BY_REGEX": "Invalid Format",
-  "INVALID_BY_RANGE": "Value Not In Allowed Range",
-  "INVALID_BY_SCRIPT": "Invalid By Custom Validation Script",
-  "INVALID_ENUM_VALUE": "Value Error",
-  "UNRECOGNIZED_FIELD": "Unrecognized Field",
-  "INVALID_BY_UNIQUE": "Not unique values",
-}
-const regexTypes = {
-  "^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_\/\\-&]{0,250}$": "REGEX ERROR: Free Text.",
-  "^[\\w\\d\\s\\(\\)\\+.',<>%:;_\/\\-&]{0,1000}$": "REGEX ERROR: Description.",
-  "^(http|https)://[a-zA-Z0-9-\\.]+\\.[a-zA-Z]{2,5}(/[a-zA-Z0-9-._~:/%?#[\\]@!$&'()*+,;=]*)?$": "REGEX ERROR: URL.",
-  "^[\\w\\d\\s/._~-]+$": "REGEX ERROR: Alphanumeric.",
-  "^(([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+,?\\s?)*|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Email address.",
-  "^[\\w\\s\\W]{0,250}$": "REGEX ERROR: Contact name.",
-  "^(?:PMID:\\s?[0-9]{1,8},?\\s?)*$": "REGEX ERROR: PMID.",
-  "^([\\d\\s\\.,->?]+|(A|a)ll|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Numeric.",
-  "^([\\d\\s\\.,-]+(months)?|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Age.",
-  "^((c|C)ollection\\sevent\\s[0-9]{1,3}||(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Collection event.",
-  "^([A-Za-z]{3}\\s[0-9]{4}|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Collection date."
-}
 // TODO: dont like this, cells should render based on isDiffShowing
 const getTableData = (status, fields) =>
   status
@@ -230,8 +186,8 @@ const SchemaView = ({
       id: 'errorType',
       width: 220,
       Cell: ({ original }) => {
-        const errorType = original.errorType;
-        const name = errorTypeMessages[errorType];
+        const name = original.errorType;
+        //const name = errorTypeMessages[errorType];
         return (
           <div
             css={css`
@@ -255,23 +211,25 @@ const SchemaView = ({
       id: 'errorMessage',
       Cell: ({ original }) => {
         let infoMessage = original.message;
-        const regex = original.info.regex;
-        const example = original.info.examples;
+        //const regex = original.info.regex;
+        //const example = original.info.examples;
         const errorType = original.errorType;
+        
 
-        if(errorType=="INVALID_BY_REGEX"){
-          const regexMessage = regexTypes[regex];
-          infoMessage = regexMessage;
+        if(errorType=="Invalid format"){
+          const format = original.info.format
+          //const regexMessage = regexTypes[regex];
+          //infoMessage = regexMessage;
           return (
             <TagContainer>
-              {infoMessage} For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error">Validation report</Link><br />Please check the value as it is not permissible for this field. <br /> <b>Example: {example}</b>
+              {infoMessage}. <br></br> REGEX Error: { format }. For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error" target="_blank">Validation report</Link>
             </TagContainer>
           );
         }
-        if(errorType=="UNRECOGNIZED_FIELD"){
+        if(errorType=="Unrecognized field"){
           return (
             <TagContainer>
-              This field is not part of the schema. Please check the field name in comparision to the <Link to="/validation/dictionary">dictionary</Link>
+              {infoMessage} Please check the field name in comparision to the <Link to="/validation/dictionary" target="_blank">dictionary</Link>
             </TagContainer>
           );
         }
@@ -299,7 +257,6 @@ const SchemaView = ({
   if(schema.status=="valid"){
     return <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
     <SchemaMeta schema={schema} fieldCount={schema.result.length} status={schema.status} />
-    Metadata is valid!
     </div>
   }
   return (
