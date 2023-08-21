@@ -40,6 +40,7 @@ import union from 'lodash/union';
 import { ChangeType, resultSchema } from '../../../types';
 import Button from '../Button';
 import { compareText } from '../CompareLegend';
+import { Link } from 'react-router-dom';
 
 const formatFieldType = (value) => {
   switch (value) {
@@ -112,17 +113,17 @@ const errorTypeMessages = {
   "INVALID_BY_UNIQUE": "Not unique values",
 }
 const regexTypes = {
-  "^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_\/\\-&]{0,250}$": "This field accepts a free text string of up to 250 characters, including letters, digits, spaces, parentheses, and specific symbols (.',<>%:;_/-&).",
-  "^[\\w\\d\\s\\(\\)\\+.',<>%:;_\/\\-&]{0,1000}$": "This field accepts a detailed description string of up to 1000 characters, comprising letters, digits, spaces, parentheses, and specific symbols (+.',<>%:;_/-&).",
-  "^(http|https)://[a-zA-Z0-9-\\.]+\\.[a-zA-Z]{2,5}(/[a-zA-Z0-9-._~:/%?#[\\]@!$&'()*+,;=]*)?$": "This field accepts a URL starting with 'http://' or 'https://' followed by domain names and optional path components.",
-  "^[\\w\\d\\s/._~-]+$": "This field accepts a URL-safe string of characters, including letters, digits, spaces, slashes, periods, underscores, and hyphens.",
-  "^(([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+,?\\s?)*|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows an email address or multiple separated by comma (,), or the strings 'Not Provided' or 'Not Collected'.",
-  "^[\\w\\s\\W]{0,250}$": "This field allows a contact name or multiple separated by comma (,).",
-  "^(?:PMID:\\s?[0-9]{1,8},?\\s?)*$": "This field allows a PubMed ID (PMID) in the format 'PMID: [ID], ' with optional whitespace.",
-  "^([\\d\\s\\.,->?]+|(A|a)ll|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows numeric values, including integers, ranges, or special values like 'All', 'Not Provided', or 'Not Collected'",
-  "^([\\d\\s\\.,-]+(months)?|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows age values, in 'months' as well or 'Not Provided' or 'Not Collected'.",
-  "^((c|C)ollection\\sevent\\s[0-9]{1,3}||(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows string such as 'collection event ' followed by a numeric value eg. 'collection event 1', or 'Not Provided' or 'Not Collected'.",
-  "^([A-Za-z]{3}\\s[0-9]{4}|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "This field allows a collection date in the format 'MMM YYYY' (e.g., Jan 2023), or special values like 'Not Provided' or 'Not Collected'."
+  "^[\\w\\d\\s\\(\\)\\+\\[\\].',<>%:;_\/\\-&]{0,250}$": "REGEX ERROR: Free Text.",
+  "^[\\w\\d\\s\\(\\)\\+.',<>%:;_\/\\-&]{0,1000}$": "REGEX ERROR: Description.",
+  "^(http|https)://[a-zA-Z0-9-\\.]+\\.[a-zA-Z]{2,5}(/[a-zA-Z0-9-._~:/%?#[\\]@!$&'()*+,;=]*)?$": "REGEX ERROR: URL.",
+  "^[\\w\\d\\s/._~-]+$": "REGEX ERROR: Alphanumeric.",
+  "^(([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+,?\\s?)*|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Email address.",
+  "^[\\w\\s\\W]{0,250}$": "REGEX ERROR: Contact name.",
+  "^(?:PMID:\\s?[0-9]{1,8},?\\s?)*$": "REGEX ERROR: PMID.",
+  "^([\\d\\s\\.,->?]+|(A|a)ll|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Numeric.",
+  "^([\\d\\s\\.,-]+(months)?|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Age.",
+  "^((c|C)ollection\\sevent\\s[0-9]{1,3}||(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Collection event.",
+  "^([A-Za-z]{3}\\s[0-9]{4}|(N|n)ot (P|p)rovided|(N|n)ot (C|c)ollected)$": "REGEX ERROR: Collection date."
 }
 // TODO: dont like this, cells should render based on isDiffShowing
 const getTableData = (status, fields) =>
@@ -162,7 +163,7 @@ const SchemaView = ({
     {
       Header: 'Field name',
       id: 'fieldName',
-      width: 200,
+      width: 220,
       Cell: ({ original }) => {
         const name = original.fieldName;
         
@@ -187,7 +188,7 @@ const SchemaView = ({
     {
       Header: 'Index',
       id: 'index',
-      width: 50,
+      width: 70,
       Cell: ({ original }) => {
         const name = original.index;
         //console.log(original);
@@ -212,10 +213,9 @@ const SchemaView = ({
     {
       Header: 'Value',
       id: 'value',
-      width: 150,
+      width: 220,
       Cell: ({ original }) => {
         const info = original.info;
-
         const infoMessage = info.value;
         return (
           <TagContainer>
@@ -228,7 +228,7 @@ const SchemaView = ({
     {
       Header: 'Error type',
       id: 'errorType',
-      width: 180,
+      width: 220,
       Cell: ({ original }) => {
         const errorType = original.errorType;
         const name = errorTypeMessages[errorType];
@@ -261,17 +261,26 @@ const SchemaView = ({
 
         if(errorType=="INVALID_BY_REGEX"){
           const regexMessage = regexTypes[regex];
-          infoMessage = regexMessage + " Please check the value as it is not permissible for this field. Refer to the example: "+ example;
+          infoMessage = regexMessage;
+          return (
+            <TagContainer>
+              {infoMessage} For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error">Validation report</Link><br />Please check the value as it is not permissible for this field. <br /> <b>Example: {example}</b>
+            </TagContainer>
+          );
         }
         if(errorType=="UNRECOGNIZED_FIELD"){
-          infoMessage = "This field is not part of the schema. Please check the field name in comparision to the dictionary.";
+          return (
+            <TagContainer>
+              This field is not part of the schema. Please check the field name in comparision to the <Link to="/validation/dictionary">dictionary</Link>
+            </TagContainer>
+          );
         }
-        
         return (
           <TagContainer>
             {infoMessage}
           </TagContainer>
         );
+        
       },
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     }
