@@ -222,7 +222,7 @@ const SchemaView = ({
           //infoMessage = regexMessage;
           return (
             <TagContainer>
-              {infoMessage}. <br></br> REGEX Error: { format }. For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error" target="_blank">Validation report</Link>
+              {infoMessage}. <br></br> Recommened data format: { format }.<br></br>For more info on error, visit <Link to="/validation/docs/validation/error-report#invalid-format-error" target="_blank">Validation report</Link>
             </TagContainer>
           );
         }

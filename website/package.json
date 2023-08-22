@@ -39,7 +39,8 @@
     "webpack": "^5.88.0",
     "@types/node": "^16.0.0",
     "require-from-string": "^2.0.2",
-    "prop-types": "^15.5.4"
+    "prop-types": "^15.5.4",
+    "docusaurus-plugin-dotenv": "1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",
