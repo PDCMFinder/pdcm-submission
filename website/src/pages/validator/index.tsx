@@ -106,7 +106,7 @@ const defaultLoadingMessage = "No file submitted for validation";
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
-  const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
+  const PDCMLVPath = process.env.REACT_APP_USE_DEV == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_PROD : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_DEV;
   const {
     siteConfig: {
       customFields: { PLATFORM_UI_ROOT = '', GATEWAY_API_ROOT = '' },
