@@ -17,18 +17,29 @@
 
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import React from 'react';
+import React, { useState, useMemo, useEffect, Fragment } from 'react';
 import Table from '../Table';
-import { TagContainer } from '../Tag';
+import Tag, { TagVariant, TAG_DISPLAY_NAME, TagContainer } from '../Tag';
 import styles from './styles.module.css';
-import DefaultTag from '@icgc-argo/uikit/Tag';
+import DefaultTag, { TAG_VARIANTS } from '@icgc-argo/uikit/Tag';
 import startCase from 'lodash/startCase';
-import { SchemaTitle } from '../Typography';
+import { DataTypography, SchemaTitle } from '../Typography';
+import { ModalPortal } from '../../pages/dictionary';
+import get from 'lodash/get';
+import { styled } from '@icgc-argo/uikit';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Icon from '@icgc-argo/uikit/Icon';
 import { useTheme } from 'emotion-theming';
 import { Theme } from '../../styles/theme/cancermodels';
+import { Script } from '../Schema/TableComponents';
+import Modal from '../Modal';
+import Typography from '@icgc-argo/uikit/Typography';
+import CodeBlock, { CompareCodeBlock } from '../CodeBlock';
 import { css } from '@emotion/core';
-import { resultSchema } from '../../../types';
+import union from 'lodash/union';
+import { ChangeType, resultSchema } from '../../../types';
+import Button from '../Button';
+import { compareText } from '../CompareLegend';
 import { Link } from 'react-router-dom';
 
 

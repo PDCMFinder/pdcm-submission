@@ -19,26 +19,48 @@
 import { jsx } from '@emotion/core';
 import React, { useState, createRef, useEffect, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
+import * as ReactDOMServer from 'react-dom/server';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 import Typography from '@icgc-argo/uikit/Typography';
 import StyleWrapper from '../../components/StyleWrapper';
+import FileFilters, {
+  NO_ACTIVE_FILTER,
+  generateFilter,
+  generateComparisonFilter,
+  createFilters,
+  attributeFilter,
+  tierFilter,
+  comparisonFilter,
+  defaultSearchParams,
+  DEFAULT_FILTER,
+} from '../../components/FileFilters';
+import TreeView from '../../components/TreeView';
 import startCase from 'lodash/startCase';
 import Modal from '@icgc-argo/uikit/Modal';
+import SchemaMenu from '../../components/ContentMenu';
 import { Display, DownloadTooltip, DownloadButtonContent, UploadButtonContent } from '../../components/common';
+import { getLatestVersion } from '../../utils';
+import Tabs, { Tab } from '@icgc-argo/uikit/Tabs';
 import { StyledTab, TAB_STATE } from '../../components/Tabs';
 import MetaValidation from '../../components/MetaValidation';
 import Icon from '@icgc-argo/uikit/Icon';
+import OldButton from '@icgc-argo/uikit/Button';
 import Button from '../../components/Button';
+import { ResetButton } from '../../components/Button';
+import CompareLegend, { generateComparisonCounts } from '../../components/CompareLegend';
 import Row from '../../components/Row';
+import VersionSelect from '../../components/VersionSelect';
 import EmotionThemeProvider from '../../styles/EmotionThemeProvider';
 import cmTheme from '../../styles/theme/cancermodels';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
-
+import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
+import { ChangeType, Schema, validationResults, resultSchema } from '../../../types';
+import Head from '@docusaurus/Head';
 
 const InfoBar = styled('div')`
   display: flex;
@@ -83,7 +105,6 @@ const defaultLoadingMessage = "No file submitted for validation";
 
 function validatorPage() {
   // docusaurus context
-  console.log(process.env.REACT_APP_PDCM_LECTERN_VALIDATOR)
   const context = useDocusaurusContext();
   const PDCMLVPath = process.env.REACT_APP_USE_LOCAL == 'false' ? process.env.REACT_APP_PDCM_LECTERN_VALIDATOR : process.env.REACT_APP_PDCM_LECTERN_VALIDATOR_LOCAL;
   const {
