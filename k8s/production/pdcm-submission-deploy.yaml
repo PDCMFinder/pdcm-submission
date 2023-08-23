@@ -27,6 +27,7 @@ spec:
               cpu: "0.2"    # The guaranteed minimum CPU the container needs (e.g., 0.2 CPU core)
               memory: "256Mi"  # The guaranteed minimum memory the container needs (e.g., 256 megabytes)
           env:
-            - name: REACT_APP_PDCM_LECTERN_VALIDATOR
+            - name: REACT_APP_PDCM_LECTERN_VALIDATOR_PROD
               value: https://www.cancermodels.org/validation/api/validation/upload-excel
-          
+            - name: REACT_APP_USE_DEV
+              value: "false"
