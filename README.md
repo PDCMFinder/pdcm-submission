@@ -4,7 +4,7 @@ User documentation for the data model and data submission to CancerModels.org.
 
 ## Visit Site
 
-[CancerModels.org: Data submission](https://www.cancermodels.org/submit)
+[CancerModels.org: Data submission](https://www.cancermodels.org/validation/)
 
 ## Contents
 

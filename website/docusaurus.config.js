@@ -20,7 +20,6 @@
 
 const path = require('path');
 
-
 module.exports = {
   title: 'CancerModels.org: Submission',
   url: 'https://www.cancermodels.org/',
