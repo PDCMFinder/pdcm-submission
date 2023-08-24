@@ -25,7 +25,6 @@ const MetaValidation = ({ date, status, dictionaryName, dictionaryVersion }) => 
   <Typography variant="data" color="#151c3d">
     {`Time of submission: ${date}`}<br></br> 
     {`Dictionary used for validation: ${dictionaryName}: ${dictionaryVersion}`}<br></br> 
-    {`Validation status: ${status}`}
   </Typography>
 );
 

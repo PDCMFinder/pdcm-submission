@@ -43,7 +43,7 @@ import Modal from '@icgc-argo/uikit/Modal';
 import SchemaMenu from '../../components/ContentMenu';
 import { Display, DownloadTooltip, DownloadButtonContent, UploadButtonContent } from '../../components/common';
 import { getLatestVersion } from '../../utils';
-import Tabs, { Tab } from '@icgc-argo/uikit/Tabs';
+import DefaultTag from '@icgc-argo/uikit/Tag';
 import { StyledTab, TAB_STATE } from '../../components/Tabs';
 import MetaValidation from '../../components/MetaValidation';
 import Icon from '@icgc-argo/uikit/Icon';
@@ -250,6 +250,10 @@ function validatorPage() {
               <Row>
                 <MetaValidation date={date} status={isDataInvalid} dictionaryName={dictionaryName} dictionaryVersion={dictionaryVersion}></MetaValidation>
               </Row>
+              <div css={css`display: flex;flex-direction: row;align-items: center;margin-bottom: 11px;`}>
+              <div><Typography variant="title">Validation status </Typography></div><div><DefaultTag className={`${styles.tag} ${styles.fields} ${isDataInvalid=='invalid' ? styles.invalid : styles.valid}`}style={{ marginTop: '3px' }}>Submission is { isDataInvalid }</DefaultTag></div>
+              
+      </div>
               </Display>
               <div id="Loading_message" css={css`
                     margin-top: 30px;

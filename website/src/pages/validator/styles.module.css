@@ -59,3 +59,16 @@ input[type='file'] {
   flex: 1;
   display:none;
 }
+
+/* Fields Tag */
+.tag.fields {
+  margin-left: 8px;
+  background-color: #4f546d;
+}
+
+.tag.fields.invalid { 
+background-color:#f80233 ;
+}
+.tag.fields.valid{
+  background-color: rgb(2, 195, 50);
+}

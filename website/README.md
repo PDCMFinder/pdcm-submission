@@ -14,7 +14,7 @@ You can run the doc site locally to see edits to the documents in real time. To 
 
 ```sh
 # Install dependencies
-$ npm i
+$ npm ci
 ```
 
 2. Run the dev server:
