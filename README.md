@@ -46,3 +46,15 @@ To run the docs site requires the following:
 `npm start`
 
 The site should open in a new page in your browser at the address: localhost:3000
+
+
+## Deployment
+
+After testing the changes locally, you can create a build by running 
+
+`npm run build`
+
+You can see the build be running
+
+`npm run serve`
+
