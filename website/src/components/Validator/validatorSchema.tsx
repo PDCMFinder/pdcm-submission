@@ -183,7 +183,11 @@ const SchemaView = ({
       width: 220,
       Cell: ({ original }) => {
         const info = original.info;
-        const infoMessage = info.value;
+        const errorType = original.errorType;
+        let infoMessage = info.value;
+        if(errorType == "Foreign key violation"){
+          infoMessage = info.value[original.fieldName]
+        }
         return (
           <TagContainer>
             {infoMessage}
