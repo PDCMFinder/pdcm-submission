@@ -41,6 +41,7 @@ import { ChangeType, resultSchema } from '../../../types';
 import Button from '../Button';
 import { compareText } from '../CompareLegend';
 import { Link } from 'react-router-dom';
+import { object } from 'prop-types';
 
 
 const HeaderName = ({ name }) => {
@@ -185,7 +186,7 @@ const SchemaView = ({
         const info = original.info;
         const errorType = original.errorType;
         let infoMessage = info.value;
-        if(errorType == "Foreign key violation"){
+        if(!Array.isArray(info.value) && info.value instanceof Object){
           infoMessage = info.value[original.fieldName]
         }
         return (
