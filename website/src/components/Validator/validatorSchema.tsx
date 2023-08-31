@@ -41,6 +41,7 @@ import { ChangeType, resultSchema } from '../../../types';
 import Button from '../Button';
 import { compareText } from '../CompareLegend';
 import { Link } from 'react-router-dom';
+import { object } from 'prop-types';
 
 
 const HeaderName = ({ name }) => {
@@ -183,7 +184,11 @@ const SchemaView = ({
       width: 220,
       Cell: ({ original }) => {
         const info = original.info;
-        const infoMessage = info.value;
+        const errorType = original.errorType;
+        let infoMessage = info.value;
+        if(!Array.isArray(info.value) && info.value instanceof Object){
+          infoMessage = info.value[original.fieldName]
+        }
         return (
           <TagContainer>
             {infoMessage}
