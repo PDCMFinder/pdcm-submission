@@ -187,13 +187,10 @@ const SchemaView = ({
         const errorType = original.errorType;
         let infoMessage = info.value;
         if(!Array.isArray(info.value) && info.value instanceof Object){
-          infoMessage = info.value[original.fieldName]
-        }
-        if(errorType=="Unique key violation"){
           infoMessage = ""
           for(const key in info.value){
-            infoMessage += info.value[key]+", "
-          }
+            infoMessage += info.value[key]+', '
+          }  
           infoMessage = infoMessage.substring(0, infoMessage.length - 2)
         }
         return (
