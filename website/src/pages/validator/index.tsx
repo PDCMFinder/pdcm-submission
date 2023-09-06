@@ -213,7 +213,7 @@ function validatorPage() {
                   }}
                   as="h1"
                 >
-                  Data validator
+                  Metadata validator
                   <Typography variant="paragraph" color="#000">
                   Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help.
                 </Typography>
