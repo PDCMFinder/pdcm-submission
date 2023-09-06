@@ -98,11 +98,11 @@ function Index() {
               icon="img/icons/search.svg"
             >
               <span className={styles.contentDescription}>
-                The validator helps in data validation against the schema
+                The validator helps in metadata validation against the schema
                 which data submitters can use for formatting and validating their data files.
               </span>
               <a className={styles.contentAction} href="/validation/validator">
-                Validator
+                Metadata Validator
                 <img src="img/icons/chevron-right.svg" height={8} width={8} />
               </a>
             </ContentBlock>
