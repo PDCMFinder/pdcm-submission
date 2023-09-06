@@ -218,14 +218,14 @@ function DictionaryPage() {
                   }}
                   as="h1"
                 >
-                  Data Dictionary
+                  Metadata Dictionary
                 </Typography>
                 <Typography variant="paragraph" color="#000">
-                  The CancerModels.org Data Dictionary expresses the details of the data model,
+                  The CancerModels.org Metadata Dictionary expresses the details of the data model,
                   which adheres to specific formats and restrictions to ensure a standard of data
                   quality. The following describes the attributes and permissible values for all of
                   the fields within the clinical tsv files for the{' '}
-                  <Link to="https://www.cancermodels.org/" target="_self">CancerModels.org platform.</Link> For more information about the {' '}<Link to="/docs/dictionary/dictionary-overview" target="_blank">data dictionary.</Link>
+                  <Link to="https://www.cancermodels.org/" target="_self">CancerModels.org platform.</Link> For more information about the {' '}<Link to="/docs/dictionary/dictionary-overview" target="_blank">Metadata dictionary.</Link>
                 </Typography>
               </div>
               <InfoBar>

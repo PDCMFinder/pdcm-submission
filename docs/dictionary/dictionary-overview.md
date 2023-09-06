@@ -1,14 +1,14 @@
 ---
 id: dictionary-overview
-title: Data dictionary overview
+title: Metadata dictionary overview
 platform_key: DOCS_DICT_OVERVIEW
 ---
 
-The [Data Dictionary](/dictionary) for CancerModels.org provide detailed insights into the structure of the platform's data model, ensuring adherence to specific formats and standards for maintaining data quality. The Data Dictionary defines a comprehensive set of files, each associated with a clinical concept, which can be seamlessly submitted to the respective platform.
+The [Metadata Dictionary](/dictionary) for CancerModels.org provide detailed insights into the structure of the platform's data model, ensuring adherence to specific formats and standards for maintaining data quality. The Metadata Dictionary defines a comprehensive set of files, each associated with a clinical concept, which can be seamlessly submitted to the respective platform.
 
-## Navigating the Data Dictionary
+## Navigating the Metadata Dictionary
 
-The Data Dictionary present an organized view of all clinical fields accepted by CancerModels.org, categorized under individual metadata TSV files.
+The Metadata Dictionary present an organized view of all clinical fields accepted by CancerModels.org, categorized under individual metadata TSV files.
 
 The field listings can be conveniently filtered based on Attribute, facilitating the identification of essential fields required for completing metadata.
 

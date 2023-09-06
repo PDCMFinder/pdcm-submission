@@ -17,7 +17,7 @@ Before we begin, let's take a look at some example files for context:
 
 ### Step 1: Download the templates and format your data
 
-- Go to the [Data Dictionary](/dictionary) page and download the **TSV Template**.
+- Go to the [Metadata Dictionary](/dictionary) page and download the **TSV Template**.
 - Format your data according to the CancerModels.org data model. 
 
 #### Tips to format your metadata file
