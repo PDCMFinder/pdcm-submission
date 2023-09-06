@@ -73,13 +73,13 @@ class ContentBlock extends React.Component {
 
 function Index() {
   return (
-    <Layout permalink="/" title="CancerModels.org - Data dictionary">
+    <Layout permalink="/" title="CancerModels.org - Metadata dictionary">
       <div>
         <HomeSplash />
         <div className={styles.mainContainer}>
           <div className={styles.row}>
             <ContentBlock
-              title="Data Dictionary"
+              title="Metadata Dictionary"
               color="#4bcee5"
               icon="img/icons/home/data-dictionary.svg"
             >
@@ -88,7 +88,7 @@ function Index() {
                 changes when formatting clinical data files.
               </span>
               <a className={styles.contentAction} href="/validation/dictionary">
-                Data Dictionary Viewer
+              Metadata Dictionary Viewer
                 <img src="img/icons/chevron-right.svg" height={8} width={8} />
               </a>
             </ContentBlock>

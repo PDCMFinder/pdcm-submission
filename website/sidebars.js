@@ -2,7 +2,7 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: 'Data dictionary',
+      label: 'Metadata dictionary',
       collapsed: true,
       items: [
         'dictionary/dictionary-overview',

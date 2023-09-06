@@ -72,7 +72,7 @@ module.exports = {
         src: 'img/logos/CancerModelsLogo.svg',
         href: 'https://www.cancermodels.org/',
       },
-      items: [{ to: 'dictionary', label: 'Data Dictionary', position: 'right' }, 
+      items: [{ to: 'dictionary', label: 'Metadata Dictionary', position: 'right' }, 
               { to: 'validator', label: 'Validator', position: 'right' }],
     },
     footer: {
