@@ -40,7 +40,7 @@
     "@types/node": "^16.0.0",
     "require-from-string": "^2.0.2",
     "prop-types": "^15.5.4",
-    "plugin-google-tag-manager": ""
+    "@docusaurus/plugin-google-tag-manager": "^2.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",
