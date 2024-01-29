@@ -49,6 +49,9 @@ module.exports = {
           // sidebars file relative to website dir.
           sidebarPath: require.resolve('./sidebars.js'),
         },
+        googleTagManager: {
+          containerId: 'G-34S5KH94SX'
+        },
       },
     ],
   ],
