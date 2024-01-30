@@ -33,7 +33,7 @@ function HomeSplash() {
       </div>
     </div>
   );
-
+  
   const SearchBanner = (props) => (
     <section className={styles.searchBanner}>
       <span className={styles.bannerText}>How can we help?</span>
