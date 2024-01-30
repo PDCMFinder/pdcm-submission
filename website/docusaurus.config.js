@@ -19,6 +19,7 @@
  */
 
 const path = require('path');
+const GTAGID =  process.env.GTAGID || 'G-J1SZK0ZGBH';
 
 module.exports = {
   title: 'CancerModels.org: Submission',
@@ -40,6 +41,9 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
+        gtag: {
+          trackingID: GTAGID,
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'), // Don't use Array, put more CSS in 'stylesheets' above
         },
@@ -48,10 +52,6 @@ module.exports = {
           path: '../docs',
           // sidebars file relative to website dir.
           sidebarPath: require.resolve('./sidebars.js'),
-        },
-        gtag: {
-          trackingID: 'G-34S5KH94SX', 
-          anonymizeIP: false,
         },
       },
     ],
@@ -65,7 +65,9 @@ module.exports = {
        * default theme is Palenight*/
       // theme: require('prism-react-renderer/themes/dracula'),
     },
-
+    gtag: {
+      trackingID: GTAGID,
+    },
     colorMode: {
       disableSwitch: true,
     },
