@@ -19,7 +19,7 @@
  */
 
 const path = require('path');
-const GTAGID =  process.env.GTAGID || 'G-J1SZK0ZGBH';
+const GTAGID =  process.env.GTAGID || 'G-34S5KH94SX';
 
 module.exports = {
   title: 'CancerModels.org: Submission',
