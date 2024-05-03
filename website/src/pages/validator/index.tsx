@@ -19,48 +19,27 @@
 import { jsx } from '@emotion/core';
 import React, { useState, createRef, useEffect, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
-import * as ReactDOMServer from 'react-dom/server';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 import Typography from '@icgc-argo/uikit/Typography';
 import StyleWrapper from '../../components/StyleWrapper';
-import FileFilters, {
-  NO_ACTIVE_FILTER,
-  generateFilter,
-  generateComparisonFilter,
-  createFilters,
-  attributeFilter,
-  tierFilter,
-  comparisonFilter,
-  defaultSearchParams,
-  DEFAULT_FILTER,
-} from '../../components/FileFilters';
-import TreeView from '../../components/TreeView';
 import startCase from 'lodash/startCase';
 import Modal from '@icgc-argo/uikit/Modal';
-import SchemaMenu from '../../components/ContentMenu';
-import { Display, DownloadTooltip, DownloadButtonContent, UploadButtonContent } from '../../components/common';
-import { getLatestVersion } from '../../utils';
+import { Display, UploadButtonContent } from '../../components/common';
 import DefaultTag from '@icgc-argo/uikit/Tag';
-import { StyledTab, TAB_STATE } from '../../components/Tabs';
+import { TAB_STATE } from '../../components/Tabs';
 import MetaValidation from '../../components/MetaValidation';
 import Icon from '@icgc-argo/uikit/Icon';
-import OldButton from '@icgc-argo/uikit/Button';
 import Button from '../../components/Button';
-import { ResetButton } from '../../components/Button';
-import CompareLegend, { generateComparisonCounts } from '../../components/CompareLegend';
 import Row from '../../components/Row';
-import VersionSelect from '../../components/VersionSelect';
 import EmotionThemeProvider from '../../styles/EmotionThemeProvider';
 import cmTheme from '../../styles/theme/cancermodels';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
-import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
-import { ChangeType, Schema, validationResults, resultSchema } from '../../../types';
-import Head from '@docusaurus/Head';
+import YAML from 'yaml';
 
 const InfoBar = styled('div')`
   display: flex;
@@ -103,6 +82,39 @@ export const ModalPortal = ({ children }) => {
 const data = require('./data.json')
 const defaultLoadingMessage = "No file submitted for validation";
 
+async function fetchDataFromGithub(PDCMLVPath: string, variable: string): Promise<string> {
+  const url = PDCMLVPath == 'true' ? 'https://raw.githubusercontent.com/PDCMFinder/pdcm-lectern-validator/develop/k8/dev/pdcm-lectern-validator/pdcm-lectern-validator-dev-deployment.yaml': 'https://raw.githubusercontent.com/PDCMFinder/pdcm-lectern-validator/main/k8/prod/pdcm-lectern-validator/pdcm-lectern-validator-prod-deployment.yaml';
+  try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error(`Failed to fetch Dictionary version from GitHub`);
+      }
+      const yamlContent = await response.text();
+      const data = YAML.parse(yamlContent);
+      
+      if (!data || typeof data !== 'object') {
+          throw new Error(`Invalid YAML content in ${url}`);
+      }
+      const extractedVariable = data['spec']['template']['spec']['containers'][0]['env'];
+      const dictionary_version = getObjectWithKeyAndValue(extractedVariable, 'name', variable)['value'];
+      if (dictionary_version === undefined) {
+          throw new Error(`Variable ${variable} not found in Dictionary version`);
+      }
+      return dictionary_version;
+  } catch (error) {
+      console.error(`Error fetching data from GitHub: ${error.message}`);
+      throw error;
+  }
+}
+
+interface MyObject {
+  [key: string]: any;
+}
+
+function getObjectWithKeyAndValue(array: MyObject[], key: string, value: any): MyObject | undefined {
+  return array.find(obj => obj[key] === value);
+}
+
 function validatorPage() {
   // docusaurus context
   const context = useDocusaurusContext();
@@ -122,6 +134,8 @@ function validatorPage() {
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
   const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
+  const [lectern_dict_version, setLecternDictVersion] = useState<string>('');
+
   const fileInputRef= React.useRef(null);
 
   const generateMenuContents = (activeSchemas) => {
@@ -145,8 +159,11 @@ function validatorPage() {
       setUploadButtonText(String(fileInputRef.current.files[0].name));
     }
   }
-
-
+  const fetchDictVersion = async () => {
+    const version = await fetchDataFromGithub(process.env.REACT_APP_DEV, "DICTIONARY_VERSION");
+    setLecternDictVersion(version);
+  };
+  fetchDictVersion();
   //Handle submit data:
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -215,10 +232,12 @@ function validatorPage() {
                 >
                   Metadata validator
                   <Typography variant="paragraph" color="#000">
+                  Dictionary version: CancerModels_Dictionary v.{lectern_dict_version}
+                  </Typography>
+                  <Typography variant="paragraph" color="#000">
                   Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help.
+                  </Typography>
                 </Typography>
-                </Typography>
-
                 <div id='file-upload' className={styles.submission}>
                     <div className="upload-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div css={css`margin-right: 5px`}>
@@ -234,7 +253,7 @@ function validatorPage() {
                         setFileSubmitted("no");
                         setActiveResult(data);
                         setLoadingMessage(defaultLoadingMessage);
-                        document.getElementById('file').value = null;
+                        (document.getElementById('file') as HTMLInputElement).value = null;
                         //fileInputRef.current.files[0] = null;
                         }}>
                         <Icon name="times" height="8px" css={css`padding-right: 5px`}/>CLEAR</Button>
