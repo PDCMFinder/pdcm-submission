@@ -40,6 +40,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
 import YAML from 'yaml';
+import fetch from "node-fetch";
 
 const InfoBar = styled('div')`
   display: flex;
