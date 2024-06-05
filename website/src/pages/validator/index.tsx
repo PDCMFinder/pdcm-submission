@@ -235,7 +235,7 @@ function validatorPage() {
                   Dictionary version: CancerModels_Dictionary v.{lectern_dict_version}
                   </Typography>
                   <Typography variant="paragraph" color="#000">
-                  Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help.
+                  Please refer to <Link to="/docs/validation/how-to-use">How-to-use</Link> for any help or contact us by sending an <a href="mailto:helpdesk@cancermodels.org?Subject=Validation errors" target="_top">email</a>.
                   </Typography>
                 </Typography>
                 <div id='file-upload' className={styles.submission}>
