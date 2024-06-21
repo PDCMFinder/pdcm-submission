@@ -63,6 +63,7 @@ import Dictionary from '../../components/Dictionary';
 import { createSchemasWithDiffs, getDictionary, getDictionaryDiff } from '../../helpers/schema';
 import { ChangeType, Schema } from '../../../types';
 import { useLocation } from 'react-router-dom';
+import ReactGA from "react-ga4";
 
 const InfoBar = styled('div')`
   display: flex;
@@ -292,7 +293,7 @@ function DictionaryPage() {
                   <OldButton
                     variant="secondary"
                     size="sm"
-                    onClick={(item) => downloadTsvFileTemplate(`all`)}
+                    onClick={(item) => {ReactGA.event('dictionary_download', {category: "event", value: 1});downloadTsvFileTemplate(`all`)}}
                   >
                     <DownloadButtonContent>File Templates</DownloadButtonContent>
                   </OldButton>

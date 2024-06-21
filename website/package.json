@@ -68,7 +68,8 @@
     "@docusaurus/module-type-aliases": "2.0.0-beta.8",
     "@tsconfig/docusaurus": "^1.0.4",
     "typescript": "5.1.6",
-    "yaml": "2.4.2"
+    "yaml": "2.4.2",
+    "react-ga4": "2.1.0"
   },
   "prettier": {
     "printWidth": 100,
