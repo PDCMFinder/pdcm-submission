@@ -41,6 +41,7 @@ import styled from '@emotion/styled';
 import Validator from '../../components/Validator';
 import YAML from 'yaml';
 import fetch from "node-fetch";
+import ReactGA from "react-ga4";
 
 const InfoBar = styled('div')`
   display: flex;
@@ -167,6 +168,7 @@ function validatorPage() {
   fetchDictVersion();
   //Handle submit data:
   const handleSubmit = async (event) => {
+    ReactGA.event('validate', {category: "event", value: 1});
     event.preventDefault();
     if(event.target[0] !== null && fileInputRef.current.files[0] !== undefined){
       setFileSubmitted("no");
