@@ -2,9 +2,14 @@ import React from 'react';
 import find from 'lodash/find';
 import startCase from 'lodash/startCase';
 import Schema from '../Validator/validatorSchema';
+import ModelSchema from '../Validator/modelScoreSchema';
 
-const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted }) =>
-  schemas.length > 0 && fileSubmitted=='yes'? (
+const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted, modelScores }) =>{
+  if (isDataInvalid === 'valid') {
+    return (<ModelSchema key="modelScore" data={modelScores} />);
+    }
+
+  return schemas.length > 0 && fileSubmitted=='yes'? (
     schemas.map((schema) => {
         const menuItem = find(menuContents, { name: startCase(schema.sheetName) });
         return (
@@ -19,5 +24,6 @@ const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted }) =>
   ) : (
     <div></div>
   );
+};
 
 export default Validator;

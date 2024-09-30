@@ -373,6 +373,7 @@ function DictionaryPage() {
               <Display visible={false}>
                 {/*   <TreeView searchValue={searchValue} data={treeData} />
                  */}
+                 <div></div>
               </Display>
             </div>
 
