@@ -141,7 +141,7 @@ const SchemaView = ({
         style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
     },    
     {
-        Header: 'Missing fields',
+        Header: 'Missing/Incomplete fields',
         id: 'missingFields',
         width: 420,
         Cell: ({ original }) => {
