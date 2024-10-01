@@ -178,11 +178,11 @@ const SchemaView = ({
           // Determine progress bar color based on score
           let progressBarColor;
           if (score >= 75) {
-            progressBarColor = 'green'; // High score
+            progressBarColor = '#02C332'; // High score
           } else if (score >= 50) {
-            progressBarColor = 'yellow'; // Medium score
+            progressBarColor = '#FFB800'; // Medium score
           } else {
-            progressBarColor = 'red'; // Low score
+            progressBarColor = '#f80233'; // Low score
           }
       
           return (
