@@ -131,10 +131,7 @@ function validatorPage() {
   const [activeResult, setActiveResult] = useState(data);//[activeSchemas, true, ""];  
   const filteredResult = activeResult.sheetsValidationResults;
   const isDataInvalid = activeResult.status;
-  const modelScores = Object.entries(activeResult.modelScore).map(([modelID, score]) => ({
-    modelID,  // 'modelID': modelID in ES6 syntax
-    score     // 'score': score in ES6 syntax
-  }));
+  const modelScores = activeResult.modelScore;
   
   const date = activeResult.date;
   const dictionaryName = activeResult.dictionaryName;

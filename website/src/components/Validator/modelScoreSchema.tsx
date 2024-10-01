@@ -34,7 +34,7 @@ const HeaderName = ({ name }) => {
   const sentenceCase = startCase(name);
   return (
     <SchemaTitle>
-      {sentenceCase} ({name})
+      {sentenceCase}
     </SchemaTitle>
   );
 };
@@ -52,7 +52,7 @@ const SchemaMeta = ({ status }: SchemaMetaProps) => {
           margin-bottom: 11px;
         `}
       >
-        <HeaderName name="Model Score" />
+        <HeaderName name="Metadata Score" />
       </div>
 
       <div
@@ -94,9 +94,9 @@ const SchemaView = ({
     {
       Header: 'Model ID',
       id: 'modelID',
-      width: 300,
+      width: 220,
       Cell: ({ original }) => {
-        const name = original.modelID;
+        const name = original.modelid;
         
         return (
           <div
@@ -115,13 +115,13 @@ const SchemaView = ({
         );
       },
       style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
-    },     
+    },
     {
-        Header: 'Metadata score',
-        id: 'score',
-        width: 300,
+        Header: 'Model type',
+        id: 'modelType',
+        width: 120,
         Cell: ({ original }) => {
-          const name = original.score;
+          const name = original.modelType;
           return (
             <div
               css={css`
@@ -139,11 +139,39 @@ const SchemaView = ({
           );
         },
         style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
-      },
-      {
-        Header: '',
+    },    
+    {
+        Header: 'Missing fields',
+        id: 'missingFields',
+        width: 420,
+        Cell: ({ original }) => {
+            const missingFields = original.missingFields;
+
+            return (
+              <div
+                css={css`
+                  font-size: 12px;
+                `}
+              >
+                {missingFields.map((field, index) => {
+                  const [sheetName, ...fieldNameParts] = field.split('.');
+                  const fieldName = fieldNameParts.join('.'); // Join in case field name contains dots
+      
+                  return (
+                    <div key={index}>
+                      <strong>Sheet:</strong> {sheetName}, <strong>Field:</strong> {fieldName}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+        },
+        style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
+    },
+    {
+        Header: 'Metadata score',
         id: 'scorePercent',
-        width: 300,
+        width: 420,
         Cell: ({ original }) => {
           const score = original.score;
       
@@ -158,13 +186,16 @@ const SchemaView = ({
           }
       
           return (
-                <div css={css`background-color: #e0e0e0; border-radius: 4px; width: 100%; height: 20px;`}>
-                <div css={css`background-color: ${progressBarColor}; width: ${score}%; height: 100%; border-radius: 4px;`}/>
+            <div css={css`font-size: 12px;font-weight: bold; width: 100%`}>
+                <div>{score}</div>
+                <div css={css`background-color: #e0e0e0; border-radius: 4px; width: 100%; height: 20px; margin-top: 5px; `}>
+                    <div css={css`background-color: ${progressBarColor}; width: ${score}%; height: 100%; border-radius: 4px; `}/>
                 </div>
+            </div>
           );
         },
         style: { whiteSpace: 'normal', wordWrap: 'break-word', padding: '8px' },
-      }, 
+    },  
   ];
 
   const containerRef = React.createRef<HTMLDivElement>();
@@ -172,7 +203,7 @@ const SchemaView = ({
   // State variables for pagination
   const itemsPerPage = 10; // Number of items to display per page
   return (
-    <div data-menu-title="Model Scores">
+    <div data-menu-title="Metadata Scores">
     <SchemaMeta status='valid' />
       <div ref={containerRef}>
         <Table

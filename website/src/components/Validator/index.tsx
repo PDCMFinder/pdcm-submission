@@ -6,7 +6,7 @@ import ModelSchema from '../Validator/modelScoreSchema';
 
 const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted, modelScores }) =>{
   if (isDataInvalid === 'valid') {
-    return (<ModelSchema key="modelScore" data={modelScores} />);
+    return (<ModelSchema key="metadataScore" data={modelScores} />);
     }
 
   return schemas.length > 0 && fileSubmitted=='yes'? (
