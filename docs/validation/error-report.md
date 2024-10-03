@@ -8,7 +8,42 @@ This document is a comprehensive guide on understanding validation reports focus
 
 Validation report errors play a crucial role in maintaining data accuracy and system integrity. CancerModels.org - Validator provides users with various error codes that are generated to provide insights and to help user align their metadata with our data model. 
 
-## Error types
+## Valid report
+
+If your metadata submission passes the validation process, the report will be flagged as **valid**. A valid report means that all required fields have been correctly provided, and the values adhere to the expected formats and data types.
+
+#### Summary of Valid Submission:
+- **Data completeness**: All mandatory fields are present.
+- **Data integrity**: Values comply with the required data types, formats, and permissible ranges.
+- **Metadata alignment**: The provided metadata aligns with the data model in terms of schema structure and content.
+
+When your metadata is valid, the system generates a **metadata score** to reflect how well the submission aligns with the required schema. This score is calculated based on the presence and validity of required and recommended fields, as well as the accuracy of the provided data. The score can vary based on model type (e.g., PDX, organoid, cell line) and reflects the overall quality of the metadata submission.
+
+### Metadata Score Table:
+
+| Model ID      | Model Type | Metadata Score | Missing Fields                                      |
+| ------------- | ---------- | ------------------ | --------------------------------------------------- |
+| CRC0014LM     | PDX        | 92                | None                                                |
+| CRC0014LM_Cell| Cell Line  | 75                | patient.sex, model_validation.morphological_features |
+
+#### How the Metadata Score is Calculated:
+1. **Model Type**: Scores are calculated differently depending on whether the model is a PDX, organoid, or cell line. 
+2. **Field Weights**: Each field has a specific weight assigned based on its importance. The more critical the field, the higher the impact on the score.
+3. **Missing Fields**: If fields are missing or invalid, they are listed in the "Missing Fields" column, affecting the overall score.
+   
+A **100 score** indicates that all required fields are provided and valid, while lower scores highlight areas where the metadata could be improved.
+
+
+## Invalid report
+
+When your metadata submission fails the validation process, the report will be flagged as **invalid**. An invalid report indicates that one or more errors have been detected in the submitted metadata, which may hinder data accuracy and integrity.
+
+#### Summary of Invalid Submission:
+- **Missing Fields**: Required fields are not provided.
+- **Data Type Errors**: Values do not conform to the expected data types.
+- **Format Violations**: Submitted values fail to meet defined formatting requirements.
+
+### Error types
 
 | Error type | Error description   | Error resolution |
 | ----------------------------------- | ------------------------------------------------------------------------------ |  --------- |
@@ -20,7 +55,7 @@ Validation report errors play a crucial role in maintaining data accuracy and sy
 | **Value error**                         | The provided value/data does not match any of the allowed values.              | Cross-reference the provided value with the allowed options. Please refer to the [dictionary](/dictionary). |
 | **Unrecognized field**                  | The submitted data has a field which is not in the schema.                     | Review the list of valid fields and remove any extraneous or irrelevant data. |
 
-## Invalid format error
+### Invalid format error
 
 | Regular Expression type | Description of the Regular expression type                                                                                      | Regular Expression Pattern                                                                                                    |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -36,17 +71,17 @@ Validation report errors play a crucial role in maintaining data accuracy and sy
 | Collection event         | This regex allows string such as 'collection event ' followed by a numeric value eg. 'collection event 1', or 'Not Provided' or 'Not Collected'.                 | ^((c\|C)ollection\\sevent\\s[0-9]{1,3}\|\|(N\|n)ot (P\|p)rovided\|(N\|n)ot (C\|c)ollected)$      |
 | Collection date          | This regex allows a collection date in the format 'MMM YYYY' (e.g., Jan 2023), or special values like 'Not Provided' or 'Not Collected'.                       | ^([A-Za-z]{3}\\s[0-9]{4}\|(N\|n)ot (P\|p)rovided\|(N\|n)ot (C\|c)ollected)$                  |
 
-## Value error
+### Value error
 
 Some fields will only accept certain values from a list of controlled terminology that is provided in the permissible values column of the [dictionary](/dictionary) tables. Values must match the dictionary spelling exactly, but can be submitted case-insensitive.
 
-### patient
+#### patient
 | Field           | Permissible values                                             |
 |-----------------|----------------------------------------------------|
 | sex             | female, male, other, Not provided, Not collected   |
 | ethnicity assessment method             | self-assessed, genetic, Not provided, Not collected |
 
-### patient_sample
+#### patient_sample
 | Field           | Permissible values                                             |
 |-----------------|----------------------------------------------------|
 | tumour type      | primary, metastatic, recurrent, refractory, pre-malignant, Not provided, Not collected |
@@ -55,18 +90,18 @@ Some fields will only accept certain values from a list of controlled terminolog
 | treated_at_collection       | yes, no, Not provided, Not collected                |
 | treated_prior_to_collection       | yes, no, Not provided, Not collected                |
 
-### sharing
+#### sharing
 | Field           | Permissible values                                             |
 |-----------------|----------------------------------------------------|
 | accessibility   | academia, industry, academia and industry            |
 | europdx access modality         | transnational access, collaboration only, Not applicable, Not provided, Not collected |
 
-### pdx_model
+#### pdx_model
 | Field           | Permissible values                                             |
 |-----------------|----------------------------------------------------|
 | engraftment_type | heterotopic, orthotopic, Not provided, Not collected |
 
-### cell_model
+#### cell_model
 | Field           | Permissible values                                             |
 |-----------------|----------------------------------------------------|
 | type      | organoid, CRC, 3-D: other, 2D: other, cell line, Not provided, Not collected |

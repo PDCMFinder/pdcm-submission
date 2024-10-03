@@ -131,6 +131,8 @@ function validatorPage() {
   const [activeResult, setActiveResult] = useState(data);//[activeSchemas, true, ""];  
   const filteredResult = activeResult.sheetsValidationResults;
   const isDataInvalid = activeResult.status;
+  const modelScores = activeResult.modelScore;
+  
   const date = activeResult.date;
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
@@ -214,7 +216,6 @@ function validatorPage() {
   };
   // Menu Contents
   const menuContents = generateMenuContents(filteredResult);
-  
   return (
     <EmotionThemeProvider theme={cmTheme}>
       <div id="modalCont" className={styles.modalCont} ref={modalPortalRef} />
@@ -291,6 +292,7 @@ function validatorPage() {
                     menuContents={menuContents}
                     isDataInvalid={isDataInvalid}
                     fileSubmitted={fileSubmitted}
+                    modelScores={modelScores}
                   />
                 </div>
               </Display>  

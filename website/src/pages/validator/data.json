@@ -49,5 +49,7 @@
             "status": "valid",
             "result": []
         }
-    ]
+    ],
+    "modelScore": {
+    }
 }

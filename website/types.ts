@@ -19,6 +19,11 @@ export interface resultSchema{
   result: Array<schemaResult>
 }
 
+export interface modelScoreSchema{
+  modelID: string;
+  score: number;
+}
+
 export interface schemaResult{
   errorType: string;
   fieldName: string;

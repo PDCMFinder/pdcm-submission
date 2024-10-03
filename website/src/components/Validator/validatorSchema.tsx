@@ -273,7 +273,6 @@ const SchemaView = ({
   // State variables for pagination
   const itemsPerPage = 10; // Number of items to display per page
   
-  //console.log(tableData);
   if(schema.status=="valid"){
     return <div ref={menuItem.contentRef} data-menu-title={menuItem.name} className={styles.schema}>
     <SchemaMeta schema={schema} fieldCount={schema.result.length} status={schema.status} />
