@@ -14,21 +14,17 @@
 * License.
 */
 /** @jsx jsx */
+
 import { jsx } from '@emotion/core';
-import React  from 'react';
+import React , { Suspense, lazy }  from 'react';
 import Table from '../Table';
-import { TagContainer } from '../Tag';
-import styles from './styles.module.css';
-import DefaultTag from '@icgc-argo/uikit/Tag';
 import startCase from 'lodash/startCase';
 import { SchemaTitle } from '../Typography';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useTheme } from 'emotion-theming';
-import { Theme } from '../../styles/theme/cancermodels';
 import { css } from '@emotion/core';
-import { resultSchema } from '../../../types';
-import { Link } from 'react-router-dom';
-import Plot from 'react-plotly.js';
+
+const Plot = lazy(() => import('react-plotly.js'));
+
 
 const HeaderName = ({ name }) => {
   const sentenceCase = startCase(name);
@@ -279,6 +275,7 @@ const SchemaView = ({
       </div>
       <div>
       <div>
+      <Suspense fallback={<div>Loading...</div>}> 
       <Plot
           data={pdxplotData}
           layout={{
@@ -298,6 +295,7 @@ const SchemaView = ({
             showlegend: true,
           }}
         />
+      </Suspense>
       </div>
 
       </div>

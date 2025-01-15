@@ -25,6 +25,7 @@
     "@mdx-js/react": "^1.6.21",
     "@svgr/webpack": "^5.5.0",
     "@types/node": "^16.0.0",
+    "@types/plotly.js": "^2.35.1",
     "axios": "^0.21.1",
     "clipboard": "^2.0.4",
     "clsx": "^1.1.1",
