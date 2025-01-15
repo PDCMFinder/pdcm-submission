@@ -4,8 +4,9 @@ import startCase from 'lodash/startCase';
 import Schema from '../Validator/validatorSchema';
 import ModelSchema from '../Validator/modelScoreSchema';
 
-const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted, modelScores }) =>{
+const Validator = ({ schemas, menuContents, isDataInvalid, fileSubmitted, modelScores, mcsDistribution }) =>{
   if (isDataInvalid === 'valid') {
+  
     return (<ModelSchema key="metadataScore" data={modelScores} />);
     }
 

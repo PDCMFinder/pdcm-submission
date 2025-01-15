@@ -109,6 +109,33 @@ async function fetchDataFromGithub(PDCMLVPath: string, variable: string): Promis
   }
 }
 
+const fetchScores = async (): Promise<any[]> => {
+  const response = await fetch('https://www.cancermodels.org/api/search_index?select=scores');
+  const data = await response.json();
+  //console.log(data);
+  return data;
+};
+
+const transformScores = (data: any[]): { [key: string]: number[] } => {
+  const transformed: { [key: string]: number[] } = { 'In Vitro': [], 'PDX': [] };
+
+  data.forEach((item: any) => {
+    const scores = item.scores;
+
+    // Add in vitro metadata scores
+    if (scores.in_vitro_metadata_score > 0) {
+      transformed['In Vitro'].push(scores.in_vitro_metadata_score);
+    }
+
+    // Add PDX metadata scores
+    if (scores.pdx_metadata_score > 0) {
+      transformed['PDX'].push(scores.pdx_metadata_score);
+    }
+  });
+  return transformed;
+};
+
+
 interface MyObject {
   [key: string]: any;
 }
@@ -133,13 +160,14 @@ function validatorPage() {
   const isDataInvalid = activeResult.status;
   const modelScores = activeResult.modelScore;
   
+
   const date = activeResult.date;
   const dictionaryName = activeResult.dictionaryName;
   const dictionaryVersion = activeResult.dictionaryVersion;
   const [uploadButtonText, setUploadButtonText] = useState("Upload files for validation");
   const [Loading_message, setLoadingMessage] = useState(defaultLoadingMessage);
-  const [lectern_dict_version, setLecternDictVersion] = useState<string>('');
-
+  const [lectern_dict_version, setLecternDictVersion] = useState(null);
+  const [mcsDistribution, setMCSDistribution] = useState(null);
   const fileInputRef= React.useRef(null);
 
   const generateMenuContents = (activeSchemas) => {
@@ -163,11 +191,56 @@ function validatorPage() {
       setUploadButtonText(String(fileInputRef.current.files[0].name));
     }
   }
-  const fetchDictVersion = async () => {
-    const version = await fetchDataFromGithub(process.env.REACT_APP_DEV, "DICTIONARY_VERSION");
-    setLecternDictVersion(version);
-  };
-  fetchDictVersion();
+  useEffect(() => {
+    // Flag to track if the component is mounted
+    let isMounted = true;
+
+    // Fetch dictionary version
+    const fetchDictVersion = async () => {
+      try {
+        const version = await fetchDataFromGithub(process.env.REACT_APP_DEV, "DICTIONARY_VERSION");
+        if (isMounted) {
+          setLecternDictVersion(version);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Fetch MCS distribution
+    const fetchmcsData = async () => {
+      try {
+        const rawData = await fetchScores();
+        const transformedData = transformScores(rawData);
+        if (isMounted) {
+          setMCSDistribution(transformedData);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchDictVersion();
+    fetchmcsData();
+
+    // Cleanup function to set isMounted to false when the component unmounts
+    return () => {
+      isMounted = false;
+    };
+  }, []);  // Empty dependency array means this runs only once when the component mounts
+
+  const updatedModelScores = React.useMemo(() => {
+    if (Object.keys(modelScores).length === 0) {
+      return {}; // or whatever fallback you prefer
+    }
+  
+    return modelScores.map(item => ({
+      ...item,
+      MCS: item.modelType.toLowerCase() === 'pdx' ? mcsDistribution.PDX : mcsDistribution["In Vitro"],
+    }));
+  }, [modelScores, mcsDistribution]);
+  
+
   //Handle submit data:
   const handleSubmit = async (event) => {
     ReactGA.event('validate', {category: "event", value: 1});
@@ -215,6 +288,7 @@ function validatorPage() {
     }
   };
   // Menu Contents
+
   const menuContents = generateMenuContents(filteredResult);
   return (
     <EmotionThemeProvider theme={cmTheme}>
@@ -292,7 +366,8 @@ function validatorPage() {
                     menuContents={menuContents}
                     isDataInvalid={isDataInvalid}
                     fileSubmitted={fileSubmitted}
-                    modelScores={modelScores}
+                    modelScores={updatedModelScores}
+                    mcsDistribution={mcsDistribution}
                   />
                 </div>
               </Display>  
